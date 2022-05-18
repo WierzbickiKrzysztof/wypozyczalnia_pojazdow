@@ -7,6 +7,7 @@
     <title>Car Rental - Profesjonalna wypożyczalnia pojazdów</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.css') }}">
 </head>
 
@@ -92,7 +93,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('/assets/js/bs-init.js') }}"></script>
 
-
+<x-flash-message />
 </body>
 
 </html>

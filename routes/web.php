@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PojazdController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,19 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // Zaloguj
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+
+// Pojazdy //
+Route::get('/pojazdy', [PojazdController::class, 'index']);
+
+Route::get('/pojazdy/create', [PojazdController::class, 'create'])->middleware('auth');
+
+Route::post('/pojazdy', [PojazdController::class, 'store']);
+
+Route::get('/pojazdy/{pojazd}/edit', [PojazdController::class, 'edit'])->middleware('auth');
+
+Route::put('/pojazdy/{pojazd}', [PojazdController::class, 'update']);
+
+Route::delete('/pojazdy/{pojazd}', [PojazdController::class, 'destroy'])->middleware('auth');
+
+Route::get('/pojazdy/{pojazd}', [PojazdController::class, 'show'])->middleware('auth');
