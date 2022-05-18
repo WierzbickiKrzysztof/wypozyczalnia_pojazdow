@@ -15,11 +15,30 @@
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><i class="fas fa-car"></i></span><span>Car Rental</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-5">
             <ul class="navbar-nav ms-auto">
+                @auth
+                <li class="nav-item"><a class="nav-link active" href="#">Hej, {{ auth()->user()->name }}</a></li>
+                @endauth
                 <li class="nav-item"><a class="nav-link" href="/pojazdy/create">Dodaj pojazd</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">O nas</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Cennik</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
-            </ul><a class="btn btn-danger ms-md-2" role="button" href="#">Panel Pracownika</a><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                @auth
+
+                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/pojazdy/manage">Panel Pracownika</a></li>
+                    <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a></li>
+                    <form class="inline" method="POST" action="/logout">
+                        @csrf
+                        <li class="nav-item"><button type="submit" class="btn btn-success ms-md-2">
+                            Wyloguj się
+                        </button></li>
+                    </form>
+                @else
+                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/register">Rejestracja</a></li>
+                    <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="/login">Logowanie</a></li>
+                @endauth
+            </ul>
         </div>
     </div>
 </nav>
@@ -43,10 +62,8 @@
     <div class="container position-relative">
         <div class="row d-flex justify-content-center">
                 <div class="mb-5">
-                    <div class="p-sm-5">
                         {{-- VIEW OUTPUT --}}
                         {{ $slot }}
-                    </div>
                 </div>
         </div>
     </div>
