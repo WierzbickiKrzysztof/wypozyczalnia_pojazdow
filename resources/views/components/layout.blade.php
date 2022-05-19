@@ -45,7 +45,7 @@
 </nav>
 <section>
     <div class="container-fluid" style="padding: 0;">
-        <div class="border rounded border-0 d-flex flex-column justify-content-center align-items-center p-4 py-5" style="background: linear-gradient(rgba(0,123,255,0.2), rgba(0,123,255,0.2)), url({{ '/assets/img/Banner.png' }}) left / cover;height: 500px;">
+        <div class="border rounded border-0 d-flex flex-column justify-content-center align-items-center p-4 py-5" style="background: linear-gradient(rgba(0,123,255,0.2), rgba(0,123,255,0.2)), url({{ asset('/assets/img/Banner.png') }}) left / cover;height: 500px;">
             <div class="row">
                 <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center justify-content-xxl-center mb-3 mb-4 py-2 px-4 py-2 px-4 banner_info">
                     <div>
