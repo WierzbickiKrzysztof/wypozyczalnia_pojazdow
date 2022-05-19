@@ -27,7 +27,7 @@
             <ul class="navbar-nav ms-auto">
                 @auth
 
-                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/pojazdy/manage">Panel Pracownika</a></li>
+                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/users/manage">Panel Pracownika</a></li>
                     <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a></li>
                     <form class="inline" method="POST" action="/logout">
                         @csrf

@@ -49,3 +49,15 @@ Route::put('/pojazdy/{pojazd}', [PojazdController::class, 'update']);
 Route::delete('/pojazdy/{pojazd}', [PojazdController::class, 'destroy'])->middleware('auth');
 
 Route::get('/pojazdy/{pojazd}', [PojazdController::class, 'show'])->middleware('auth');
+
+//manage//
+
+Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth');
+Route::post('/users/manage/add', [UserController::class, 'manage_store'])->middleware('auth');
+Route::get('/users/manage_show', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store_edit']);
+Route::get('/users/manage_edit/{user}', [UserController::class, 'edit'])->middleware('auth');
+Route::put('/users/{user}', [UserController::class, 'update']);
+Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy'])->middleware('auth');
+
+
