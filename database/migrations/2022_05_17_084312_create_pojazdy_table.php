@@ -15,16 +15,31 @@ return new class extends Migration
     {
         Schema::create('pojazdy', function (Blueprint $table) {
             $table->id();
-            $table->string('unikatowy_id_pojazdu');
-            $table->string('marka');
-            $table->string('model');
-            $table->string('wersja');
-            $table->string('przebieg');
-            $table->string('stan');
-            $table->string('paliwo');
-            $table->integer('id_wyp');
-            $table->date('data_wypozyczenia');
-            $table->date('data_zwrotu');
+
+            //np. numer rejestracyjny
+            $table->string('nr_pojazdu');
+
+            //Int - id odwołanie do tabeli słownikowej
+            $table->integer('typ_pojazdu');
+
+            //int - id odwołanie do tabeli słownikowej
+            $table->integer('marka');
+
+            //int - id odwołanie do tabeli słownikowej
+            $table->integer('model');
+
+            //int - id odwołanie do tabeli słownikowej
+            $table->integer('wersja');
+
+            //int - id odwołanie do tabeli słownikowej
+            $table->integer('stan');
+
+            //przebieg
+            $table->integer('przebieg');
+
+            //
+            $table->integer('pojemnosc_baku');
+
 
             $table->timestamps();
         });

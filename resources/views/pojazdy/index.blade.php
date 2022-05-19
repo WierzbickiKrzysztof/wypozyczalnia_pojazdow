@@ -2,7 +2,7 @@
 
     <h2 class="text-center mb-4">Lista pojazdów</h2>
     @foreach($pojazdy as $pojazd)
-        <h1><a href="/pojazdy/{{ $pojazd->id }}">{{ $pojazd->unikatowy_id_pojazdu }}</a></h1>
+        <h1><a href="/pojazdy/{{ $pojazd->id }}">{{ $pojazd->nr_pojazdu }}</a></h1>
         <h2>{{ $pojazd->marka }}</h2>
         <h3>{{ $pojazd->model }}</h3>
     @endforeach

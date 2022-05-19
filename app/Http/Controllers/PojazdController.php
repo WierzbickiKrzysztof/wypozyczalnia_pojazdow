@@ -27,21 +27,19 @@ class PojazdController extends Controller
 
     public function store(Request $request) {
         $formFields = $request->validate([
-            'unikatowy_id_pojazdu' => ['required', Rule::unique('pojazdy', 'unikatowy_id_pojazdu')],
+            'nr_pojazdu' => ['required', Rule::unique('pojazdy', 'nr_pojazdu')],
+            'typ_pojazdu' => 'required',
             'marka' => 'required',
             'model' => 'required',
             'wersja' => 'required',
-            'przebieg' => 'required',
             'stan' => 'required',
-            'paliwo' => 'required',
-            'id_wyp' => 'required',
-            'data_wypozyczenia' => ['required', 'date'],
-            'data_zwrotu' => ['required', 'date']
+            'przebieg' => 'required',
+            'pojemnosc_baku' => 'required'
         ]);
 
         Pojazd::create($formFields);
 
-        return redirect('/')->with('message', 'Pojazd utworzony pomyślnie!');
+        return redirect('/pojazdy')->with('message', 'Pojazd utworzony pomyślnie!');
     }
 
     public function edit(Pojazd $pojazd) {
@@ -50,16 +48,14 @@ class PojazdController extends Controller
 
     public function update(Request $request, Pojazd $pojazd) {
         $formFields = $request->validate([
-
+            'nr_pojazdu' => 'required',
+            'typ_pojazdu' => 'required',
             'marka' => 'required',
             'model' => 'required',
             'wersja' => 'required',
-            'przebieg' => 'required',
             'stan' => 'required',
-            'paliwo' => 'required',
-            'id_wyp' => 'required',
-            'data_wypozyczenia' => ['required', 'date'],
-            'data_zwrotu' => ['required', 'date']
+            'przebieg' => 'required',
+            'pojemnosc_baku' => 'required'
         ]);
 
         $pojazd->update($formFields);

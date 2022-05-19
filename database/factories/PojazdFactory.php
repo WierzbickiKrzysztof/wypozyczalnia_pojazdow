@@ -18,7 +18,7 @@ class PojazdFactory extends Factory
     public function definition()
     {
         return [
-            'unikatowy_id_pojazdu' => Str::random(3).$this->faker->numberBetween(10000,99999),
+            'nr_pojazdu' => Str::random(3).$this->faker->numberBetween(10000,99999),
             'marka' => $this->faker->word(),
             'model' => $this->faker->word(),
             'wersja' => $this->faker->numberBetween(1, 10),

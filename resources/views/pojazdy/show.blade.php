@@ -1,5 +1,5 @@
 <x-layout>
-    <h2 class="text-center mb-4">{{ $pojazdy->unikatowy_id_pojazdu }}</h2>
+    <h2 class="text-center mb-4">{{ $pojazdy->nr_pojazdu }}</h2>
     <h2>{{ $pojazdy->marka }}</h2>
     <h3>{{ $pojazdy->model }}</h3>
     @auth
