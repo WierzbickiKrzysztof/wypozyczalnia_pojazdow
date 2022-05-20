@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PojazdController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KlientController;
 use App\Http\Controllers\WypozyczeniaController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,21 @@ Route::get('/users/manage_edit/{user}', [UserController::class, 'edit']); //->mi
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy']); //->middleware('auth');
+
+// Klienci //
+// SHOW: Lista Klienci
+Route::get('/klient/client_show', [KlientController::class, 'index'])->name('klient.index');
+
+
+Route::get('/klient/client', [KlientController::class, 'manage_client'])->name('klient.manage'); //->middleware('auth');
+Route::post('/klient/client/add', [KlientController::class, 'manage_client_store'])->name('klient.add'); //->middleware('auth');
+
+Route::get('/klient/client_edit/{user}', [KlientController::class, 'edit']); //->middleware('auth');
+Route::post('/klient', [KlientController::class, 'store_client_edit']);
+
+Route::put('/klient/{user}', [KlientController::class, 'update']);
+Route::delete('/klient/client_show/{user}', [KlientController::class, 'destroy']); //->middleware('auth');
+
 
 // Pojazdy //
 // SHOW: Wszystkie pojazdy

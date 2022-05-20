@@ -1,10 +1,10 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage">Dodaj Pracownika</a>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.generate') }}">Generuj Raport</a>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.index') }}">Lista Klientów</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.manage') }}">Dodaj Klienta</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pracownicy.index') }}">Lista Pracowników</a>
+
     </div>
-    <h1>Lista Pracowników</h1>
+    <h1>Lista Klientów</h1>
 
 
     <head>
@@ -32,26 +32,26 @@
             <th colspan="2"></th>
         </tr>
 
-    @foreach($users as $users)
+        @foreach($users as $users)
 
 
             <tr>
                 <td><a href="#">{{ $users->name }}</a></td>
                 <td>{{ $users->telefon }}</td>
                 <td>{{ $users->email}}</td>
-                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage_edit/{{ $users->id }}">Edytuj Dane</a></td>
+                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/klient/client_edit/{{ $users->id }}">Edytuj Dane</a></td>
                 <td>
                     @auth
-                        <form method="POST" action="/users/manage_show/{{ $users->id }}">
+                        <form method="POST" action="/klient/client_show/{{ $users->id }}">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger ms-md-2" type="submit">Usuń Pracownika</button>
+                            <button class="btn btn-danger ms-md-2" type="submit">Usuń Klienta</button>
                         </form>
                     @endauth
                 </td>
             </tr>
 
-    @endforeach
+        @endforeach
     </table>
     </body>
     </html>
