@@ -27,5 +27,8 @@ class Klient extends Model
         }
     }
 
+    public function wypozyczenie() {
+        return $this->belongsTo(Wypozyczenie::class, 'id_klienta', 'id');
+    }
 
 }

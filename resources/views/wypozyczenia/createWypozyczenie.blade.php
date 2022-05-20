@@ -5,8 +5,14 @@
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
                 <div class="mb-3">
-                    <label class="form-label" for="id_klienta">ID Klienta</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="id_klienta" name="id_klienta" required="" value="{{old('id_klienta')}}">
+                    <label class="form-label" for="id_klienta">Klienta</label>
+
+                    <select name="id_klienta" id="id_klienta" class="category">
+                        <option disabled selected>--wybierz klienta--</option>
+                        @foreach($klient as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }} | {{ $item->email }}</option>
+                        @endforeach
+                    </select>
                     @error('id_klienta')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

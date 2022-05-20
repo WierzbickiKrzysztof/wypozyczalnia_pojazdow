@@ -15,4 +15,8 @@ class Wypozyczenie extends Model
     public function pojazd() {
         return $this->hasOne(Pojazd::class, 'id_pojazdu');
     }
+
+    public function klient() {
+        return $this->hasOne(Klient::class, 'id_klient');
+    }
 }

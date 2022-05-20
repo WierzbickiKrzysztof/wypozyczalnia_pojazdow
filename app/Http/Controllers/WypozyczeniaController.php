@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Klient;
 use App\Models\Pojazd;
 use Illuminate\Http\Request;
 use App\Models\Wypozyczenie;
@@ -20,8 +21,8 @@ class WypozyczeniaController extends Controller
 
     public function create() {
         $pojazd = Pojazd::all();
-
-        return view('wypozyczenia.createWypozyczenie', ['pojazd' => $pojazd]);
+        $klient = Klient::all();
+        return view('wypozyczenia.createWypozyczenie', ['pojazd' => $pojazd, 'klient' => $klient]);
     }
 
     public function store(Request $request) {
