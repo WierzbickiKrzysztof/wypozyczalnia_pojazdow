@@ -80,6 +80,12 @@ Route::get('/wypozyczenia/create', [WypozyczeniaController::class, 'create'])->n
 // STORE: Zapisanie nowego wypożyczenia
 Route::post('/wypozyczenia', [WypozyczeniaController::class, 'store']);
 
+Route::get('wypozyczenia/generate', function (){
+    return view('wypozyczenia.generate');
+})->name('wypozyczenia.generate') ;
+
+Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report') ;
+
 // SHOW: Formularz edytowania wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
 // UPDATE: Aktualizacja wypożyczenia

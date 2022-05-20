@@ -1,10 +1,6 @@
 <x-layout>
-    <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz pojazd</a>
+    <h2 class="text-center mb-4">Raport {{ $data_p }} - {{$data_k}}</h2>
 
-
-    </div>
-    <h2 class="text-center mb-4">Lista wypozyczen</h2>
     @foreach($wypozyczenia as $Wypozyczenie)
         <h1>ID Klienta: <a href="#{{ $Wypozyczenie->id }}">{{ $Wypozyczenie->id_klienta }}</a></h1>
         <h2>ID Pojazdu: {{ $Wypozyczenie->id_pojazdu }}</h2>
@@ -16,7 +12,5 @@
 
     @endforeach
 
-    {{--    <div class="mt-6 p-4">--}}
-    {{--        {{ $pojazdy->links() }}--}}
-    {{--    </div>--}}
+
 </x-layout>
