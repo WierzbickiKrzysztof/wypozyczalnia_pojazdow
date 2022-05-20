@@ -4,7 +4,7 @@
 
     </div>
     <h1>Dodaj Pracownika</h1>
-    <form method="POST" action="{{ route('pracownicy.manage_show') }}">
+    <form method="POST" action="/user/manage_show">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">

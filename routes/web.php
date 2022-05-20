@@ -48,7 +48,7 @@ Route::get('/users/manage_edit/{user}', [UserController::class, 'edit']); //->mi
 Route::post('/users', [UserController::class, 'store_edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy'])->name('pracownicy.manage_show'); //->middleware('auth');
+Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy']); //->middleware('auth');
 
 
 // Pojazdy //

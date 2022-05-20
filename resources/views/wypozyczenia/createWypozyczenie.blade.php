@@ -1,6 +1,6 @@
 <x-layout>
     <h1>Dodaj wypozyczenie</h1>
-    <form method="POST" action="/wypozyczenia/create">
+    <form method="POST" action="/wypozyczenia">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
