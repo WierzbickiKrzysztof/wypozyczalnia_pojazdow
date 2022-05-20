@@ -1,6 +1,6 @@
 <x-layout>
     <h1>Generuj Raport</h1>
-    <form method="POST" action="/wypozyczenia/report">
+    <form method="POST" action="{{ route('wypozyczenia.report') }}">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">

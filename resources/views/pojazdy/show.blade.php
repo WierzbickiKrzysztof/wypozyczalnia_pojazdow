@@ -20,9 +20,9 @@
                 <td>{{ $pojazdy->przebieg }}</td>
                 <td>{{ $pojazdy->pojemnosc_baku }}</td>
 {{--                @auth--}}
-                <td><a class="btn btn-info ms-md-2" href="/pojazdy/{{ $pojazdy->id }}/edit">Edytuj wpis</a></td>
+                <td><a class="btn btn-info ms-md-2" href="{{ route('pojazdy.edit', ['pojazd' => $pojazdy->id]) }}">Edytuj wpis</a></td>
                 <td>
-                    <form method="POST" action="/pojazdy/{{ $pojazdy->id }}">
+                    <form method="POST" action="{{ route('pojazdy.destroy', ['pojazd' => $pojazdy->id]) }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger ms-md-2" type="submit">Usuń wpis</button>
@@ -32,6 +32,6 @@
             </tr>
     </table>
     <br>
-    <a class="btn btn-success ms-md-2" href="/pojazdy">Powrót do listy pojazdów</a>
+    <a class="btn btn-success ms-md-2" href="{{ route('pojazdy.index') }}">Powrót do listy pojazdów</a>
 
 </x-layout>

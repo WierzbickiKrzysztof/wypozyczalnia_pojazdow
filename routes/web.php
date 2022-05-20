@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 
 // Użytkownicy //
 // SHOW: Formularz Rejestracji
 Route::get('/register', [UserController::class, 'create'])->middleware('guest')->name('user.register');
 // STORE: Zapisanie nowego Użytkownika
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
 // Wylogowanie
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth')->name('user.logout');
@@ -34,7 +34,7 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth')->n
 // SHOW: Formularz Logowanie
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 // AUTHENTICATE: Logowanie
-Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate'])->name('user.authenticate');
 
 
 // Pracownicy //
@@ -45,11 +45,11 @@ Route::get('/users/manage_show', [UserController::class, 'index'])->name('pracow
 Route::get('/users/manage', [UserController::class, 'manage'])->name('pracownicy.manage'); //->middleware('auth');
 Route::post('/users/manage/add', [UserController::class, 'manage_store'])->name('pracownicy.add'); //->middleware('auth');
 
-Route::get('/users/manage_edit/{user}', [UserController::class, 'edit']); //->middleware('auth');
+Route::get('/users/manage_edit/{user}', [UserController::class, 'edit'])->name('pracownicy.edit'); //->middleware('auth');
 //Route::post('/users', [UserController::class, 'store_edit']);
 
-Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy']); //->middleware('auth');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('pracownicy.update');
+Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy'])->name('pracownicy.destroy'); //->middleware('auth');
 
 // Klienci //
 // SHOW: Lista Klienci
@@ -59,11 +59,11 @@ Route::get('/klient/client_show', [KlientController::class, 'index'])->name('kli
 Route::get('/klient/client', [KlientController::class, 'manage_client'])->name('klient.manage'); //->middleware('auth');
 Route::post('/klient/client/add', [KlientController::class, 'manage_client_store'])->name('klient.add'); //->middleware('auth');
 
-Route::get('/klient/client_edit/{user}', [KlientController::class, 'edit']); //->middleware('auth');
+Route::get('/klient/client_edit/{user}', [KlientController::class, 'edit'])->name('klient.edit'); //->middleware('auth');
 Route::post('/klient', [KlientController::class, 'store_client_edit']);
 
-Route::put('/klient/{user}', [KlientController::class, 'update']);
-Route::delete('/klient/client_show/{user}', [KlientController::class, 'destroy']); //->middleware('auth');
+Route::put('/klient/{user}', [KlientController::class, 'update'])->name('klient.update');
+Route::delete('/klient/client_show/{user}', [KlientController::class, 'destroy'])->name('klient.destroy'); //->middleware('auth');
 
 
 // Pojazdy //
@@ -73,18 +73,18 @@ Route::get('/pojazdy', [PojazdController::class, 'index'])->name('pojazdy.index'
 // SHOW: Formularz dodawania pojazdu
 Route::get('/pojazdy/create', [PojazdController::class, 'create'])->name('pojazdy.create') ;//->middleware('auth');
 // STORE: Zapisanie nowego pojazdu
-Route::post('/pojazdy', [PojazdController::class, 'store']);
+Route::post('/pojazdy', [PojazdController::class, 'store'])->name('pojazdy.store');
 
 // SHOW: Formularz edytowania pojazdu
-Route::get('/pojazdy/{pojazd}/edit', [PojazdController::class, 'edit']); //->middleware('auth');
+Route::get('/pojazdy/{pojazd}/edit', [PojazdController::class, 'edit'])->name('pojazdy.edit'); //->middleware('auth');
 // UPDATE: Aktualizacja pojazdu
-Route::put('/pojazdy/{pojazd}', [PojazdController::class, 'update']);
+Route::put('/pojazdy/{pojazd}', [PojazdController::class, 'update'])->name('pojazdy.update');
 
 // DESTROY: Usunięcie pojazdu
-Route::delete('/pojazdy/{pojazd}', [PojazdController::class, 'destroy']); //->middleware('auth');
+Route::delete('/pojazdy/{pojazd}', [PojazdController::class, 'destroy'])->name('pojazdy.destroy'); //->middleware('auth');
 
 // SHOW: Wyświetlenie wybranego pojazdu
-Route::get('/pojazdy/{pojazd}', [PojazdController::class, 'show']); //->middleware('auth');
+Route::get('/pojazdy/{pojazd}', [PojazdController::class, 'show'])->name('pojazdy.show'); //->middleware('auth');
 
 
 // Wypożyczenia //
@@ -94,7 +94,7 @@ Route::get('/wypozyczenia', [WypozyczeniaController::class, 'index'])->name('wyp
 // SHOW: Formularz dodawania wypożyczenia
 Route::get('/wypozyczenia/create', [WypozyczeniaController::class, 'create'])->name('wypozyczenia.create') ;//->middleware('auth');
 // STORE: Zapisanie nowego wypożyczenia
-Route::post('/wypozyczenia', [WypozyczeniaController::class, 'store']);
+Route::post('/wypozyczenia', [WypozyczeniaController::class, 'store'])->name('wypozyczenia.store');
 
 Route::get('wypozyczenia/generate', function (){
     return view('wypozyczenia.generate');

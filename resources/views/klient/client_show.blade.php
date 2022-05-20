@@ -39,10 +39,10 @@
                 <td><a href="#">{{ $users->name }}</a></td>
                 <td>{{ $users->telefon }}</td>
                 <td>{{ $users->email}}</td>
-                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/klient/client_edit/{{ $users->id }}">Edytuj Dane</a></td>
+                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.edit', ['user' => $users->id]) }}">Edytuj Dane</a></td>
                 <td>
                     @auth
-                        <form method="POST" action="/klient/client_show/{{ $users->id }}">
+                        <form method="POST" action="{{ route('klient.destroy', ['user' => $users->id]) }}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger ms-md-2" type="submit">Usuń Klienta</button>

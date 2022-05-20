@@ -5,7 +5,7 @@
                 <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Zaloguj się</h2>
 
-                    <form method="POST" action="/users/authenticate">
+                    <form method="POST" action="{{ route('user.authenticate') }}">
                         @csrf
 
                         <div class="form-outline mb-4">
@@ -30,7 +30,7 @@
                             <button type="submit" class="btn btn-success btn-block btn-lg text-body">Zaloguj się</button>
                         </div>
 
-                        <p class="text-center mt-5 mb-0">Nie masz jeszcze konta? <a href="/register" class="fw-bold"><u>Zarejestruj się</u></a></p>
+                        <p class="text-center mt-5 mb-0">Nie masz jeszcze konta? <a href="{{ route('user.register') }}" class="fw-bold"><u>Zarejestruj się</u></a></p>
 
                     </form>
 

@@ -5,7 +5,7 @@
                 <div class="card-body p-5">
                     <h2 class="text-uppercase text-center mb-5">Zarejestruj się</h2>
 
-                    <form method="POST" action="/users">
+                    <form method="POST" action="{{ route('user.store') }}">
                         @csrf
                         <div class="form-outline mb-4">
                             <input type="text" id="name" class="form-control form-control-lg" name="name" value="{{ old('name') }}">
@@ -56,7 +56,7 @@
                             <button type="submit" class="btn btn-success btn-block btn-lg text-body">Zarejestruj się</button>
                         </div>
 
-                        <p class="text-center mt-5 mb-0">Posiadasz już konto? <a href="/login" class="fw-bold"><u>Zaloguj się</u></a></p>
+                        <p class="text-center mt-5 mb-0">Posiadasz już konto? <a href="{{ route('login') }}" class="fw-bold"><u>Zaloguj się</u></a></p>
 
                     </form>
 

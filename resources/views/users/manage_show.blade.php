@@ -1,6 +1,6 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage">Dodaj Pracownika</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pracownicy.manage') }}">Dodaj Pracownika</a>
         <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.generate') }}">Generuj Raport</a>
         <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.index') }}">Lista Klientów</a>
     </div>
@@ -39,15 +39,15 @@
                 <td><a href="#">{{ $users->name }}</a></td>
                 <td>{{ $users->telefon }}</td>
                 <td>{{ $users->email}}</td>
-                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage_edit/{{ $users->id }}">Edytuj Dane</a></td>
+                <td><a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pracownicy.edit', ['user' => $users->id]) }}">Edytuj Dane</a></td>
                 <td>
-                    @auth
-                        <form method="POST" action="/users/manage_show/{{ $users->id }}">
+{{--                    @auth--}}
+                        <form method="POST" action="{{ route('pracownicy.destroy', ['user' => $users->id]) }}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger ms-md-2" type="submit">Usuń Pracownika</button>
                         </form>
-                    @endauth
+{{--                    @endauth--}}
                 </td>
             </tr>
 

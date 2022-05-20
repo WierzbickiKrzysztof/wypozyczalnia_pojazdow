@@ -1,6 +1,6 @@
 <x-layout>
     <h2 class="text-center mb-4">Edytuj pojazd - {{$pojazd->nr_pojazdu}}</h2>
-    <form method="POST" action="/pojazdy/{{ $pojazd->id }}">
+    <form method="POST" action="{{ route('pojazdy.update', ['pojazd' => $pojazd->id]) }}">
         @csrf
         @method('PUT')
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">

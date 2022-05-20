@@ -1,6 +1,6 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.index') }}">Lista klientow</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.index') }}">Lista klientów</a>
 
     </div>
     <h1>Dodaj Klienta</h1>

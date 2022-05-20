@@ -1,9 +1,9 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/klient/client_show">Lista Klientów</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('klient.index') }}">Lista Klientów</a>
     </div>
     <h1>Edytuj Klientów - {{$user->name}}</h1>
-    <form method="POST" action="/klient/{{ $user->id }}">
+    <form method="POST" action="{{ route('klient.update', ['user' => $user->id]) }}">
         @csrf
         @method('PUT')
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">

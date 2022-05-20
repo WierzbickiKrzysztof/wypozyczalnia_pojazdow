@@ -15,7 +15,7 @@
 
         @foreach($pojazdy as $pojazd)
             <tr>
-                <td><a href="/pojazdy/{{ $pojazd->id }}">{{ $pojazd->nr_pojazdu }}</a></td>
+                <td><a href="{{ route('pojazdy.show', ['pojazd' => $pojazd->id]) }}">{{ $pojazd->nr_pojazdu }}</a></td>
                 <td>{{ $pojazd->s_typ_pojazdu->name }}</td>
                 <td colspan="3">{{ $pojazd->s_model->name }} {{ $pojazd->s_marka->name }} {{ $pojazd->wersja }}</td>
                 <td>{{ $pojazd->stan }}</td>

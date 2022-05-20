@@ -1,6 +1,6 @@
 <x-layout>
     <h2 class="text-center mb-4">Dodaj pojazd</h2>
-    <form method="POST" action="/pojazdy">
+    <form method="POST" action="{{ route('pojazdy.store') }}">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
