@@ -1,5 +1,8 @@
 <x-layout>
+    <div>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pojazdy.create') }}">Dodaj pojazd</a>
 
+    </div>
     <h2 class="text-center mb-4">Lista pojazdów</h2>
 
     <table>

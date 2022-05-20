@@ -19,26 +19,26 @@
                 @auth
                 <li class="nav-item"><a class="nav-link active" href="#">Hej, {{ auth()->user()->name }}</a></li>
                 @endauth
-                <li class="nav-item"><a class="nav-link" href="/pojazdy/create">Dodaj pojazd</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">O nas</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Cennik</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('pojazdy.index') }}">Pojazdy</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('wypozyczenia.index') }}">Wypożyczenia</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('pracownicy.index') }}">Pracownicy</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                @auth
+{{--                @auth--}}
 
-                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/users/manage">Panel Pracownika</a></li>
+                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('pracownicy.index') }}">Panel Pracownika</a></li>
                     <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a></li>
-                    <form class="inline" method="POST" action="/logout">
+                    <form class="inline" method="POST" action="{{ route('user.logout') }}">
                         @csrf
                         <li class="nav-item"><button type="submit" class="btn btn-success ms-md-2">
                             Wyloguj się
                         </button></li>
                     </form>
-                @else
-                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="/register">Rejestracja</a></li>
-                    <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="/login">Logowanie</a></li>
-                @endauth
+{{--                @else--}}
+                    <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('user.register') }}">Rejestracja</a></li>
+                    <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="{{ route('login') }}">Logowanie</a></li>
+{{--                @endauth--}}
             </ul>
         </div>
     </div>
@@ -51,7 +51,7 @@
                     <div>
                         <h1 class="text-uppercase fw-bold mb-3">Profesjonalna wypożyczalnia pojazdów</h1>
                         <p class="mb-4">Potrzebujesz pojazdu na kilka dni?<br>Świetnie trafiłeś, u nas najkorzystniejsze ceny w przeliczeniu na dzień.<br>Ceny już od 70 zł/dzień w zależności od pojazdu</p>
-                        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/pojazdy">Sprawdź ofertę</a>
+                        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pojazdy.index') }}">Sprawdź ofertę</a>
                         <button class="btn btn-light fs-5 py-2 px-4" type="button">Nasze lokalizacje</button>
                     </div>
                 </div>

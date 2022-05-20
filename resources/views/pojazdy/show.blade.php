@@ -19,7 +19,7 @@
                 <td>{{ $pojazdy->stan }}</td>
                 <td>{{ $pojazdy->przebieg }}</td>
                 <td>{{ $pojazdy->pojemnosc_baku }}</td>
-                @auth
+{{--                @auth--}}
                 <td><a class="btn btn-info ms-md-2" href="/pojazdy/{{ $pojazdy->id }}/edit">Edytuj wpis</a></td>
                 <td>
                     <form method="POST" action="/pojazdy/{{ $pojazdy->id }}">
@@ -28,7 +28,7 @@
                         <button class="btn btn-danger ms-md-2" type="submit">Usuń wpis</button>
                     </form>
                 </td>
-                @endauth
+{{--                @endauth--}}
             </tr>
     </table>
     <br>
