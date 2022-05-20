@@ -27,14 +27,14 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="data_rozpoczecia">Data rozpoczęcia</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_rozpoczecia" name="data_rozpoczecia" required="" value="{{old('data_rozpoczecia')}}">
+                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_rozpoczecia" name="data_rozpoczecia" required="" value="{{old('data_rozpoczecia')}}">
                     @error('data_rozpoczecia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="data_zakonczenia">Data zakończenia</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_zakonczenia" name="data_zakonczenia" required="" value="{{old('data_zakonczenia')}}">
+                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_zakonczenia" name="data_zakonczenia" required="" value="{{old('data_zakonczenia')}}">
                     @error('data_zakonczenia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
