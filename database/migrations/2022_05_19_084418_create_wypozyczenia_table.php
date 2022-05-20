@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('wypozyczenia', function (Blueprint $table) {
             $table->id();
             $table->integer('id_klienta');
-            $table->integer('id_pojazdu');
+            $table->unsignedBigInteger('id_pojazdu');
+            $table->foreign('id_pojazdu')->references('id')->on('wypozyczenia');
             $table->string('kowta_wypozyczenia_dzien');
             $table->date('data_rozpoczecia');
             $table->date('data_zakonczenia');

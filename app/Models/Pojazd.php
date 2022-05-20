@@ -30,4 +30,8 @@ class Pojazd extends Model
     public function s_model() {
         return $this->belongsTo(S_model::class, 'model');
     }
+
+    public function wypozyczenie() {
+        return $this->belongsTo(Wypozyczenie::class, 'id_pojazdu', 'id');
+    }
 }

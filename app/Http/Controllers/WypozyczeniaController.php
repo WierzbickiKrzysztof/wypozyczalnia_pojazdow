@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Pojazd;
 use Illuminate\Http\Request;
 use App\Models\Wypozyczenie;
 use Illuminate\Validation\Rule;
@@ -18,7 +19,9 @@ class WypozyczeniaController extends Controller
     }
 
     public function create() {
-        return view('wypozyczenia.createWypozyczenie');
+        $pojazd = Pojazd::all();
+
+        return view('wypozyczenia.createWypozyczenie', ['pojazd' => $pojazd]);
     }
 
     public function store(Request $request) {

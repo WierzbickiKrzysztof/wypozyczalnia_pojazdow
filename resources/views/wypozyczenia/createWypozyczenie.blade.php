@@ -12,8 +12,14 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="id_pojazdu">ID Pojazdu</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="id_pojazdu" name="id_pojazdu" required="" value="{{old('id_pojazdu')}}">
+                    <label class="form-label" for="id_pojazdu">Wybierz pojazd</label>
+
+                    <select name="id_pojazdu" id="id_pojazdu" class="category">
+                        <option disabled selected>--wybierz pojazd--</option>
+                        @foreach($pojazd as $item)
+                            <option value="{{ $item->id }}">{{ $item->s_typ_pojazdu->name }} | {{ $item->nr_pojazdu }} | {{ $item->s_marka->name }} {{ $item->s_model->name }} {{ $item->wersja }}</option>
+                        @endforeach
+                    </select>
                     @error('id_pojazdu')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
