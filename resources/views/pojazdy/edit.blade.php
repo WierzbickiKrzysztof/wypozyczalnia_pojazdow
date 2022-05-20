@@ -1,74 +1,94 @@
 <x-layout>
-    <h1>Edytuj pojazd - {{$pojazd->unikatowy_id_pojazdu}}</h1>
+    <h2 class="text-center mb-4">Edytuj pojazd - {{$pojazd->nr_pojazdu}}</h2>
     <form method="POST" action="/pojazdy/{{ $pojazd->id }}">
         @csrf
         @method('PUT')
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
+                <div class="mb-3">
+
+                    <label class="form-label" for="typ_pojazdu">Typ pojazdu</label>
+                    <select name="typ_pojazdu" id="typ_pojazdu" class="category">
+                        <option disabled>--wybierz typ pojazdu--</option>
+                        @foreach($typ_pojazdu as $item)
+                            @if($item->id == $pojazd->typ_pojazdu)
+                                <option selected value="{{ $item->id }}">{{ $item->name}}</option>
+                            @else
+                                <option value="{{ $item->id }}">{{ $item->name}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    @error('typ_pojazdu')
+                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="marka">Marka</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="marka" name="marka" required="" value="{{$pojazd->marka}}">
+                    <select name="marka" id="marka" class="category">
+                        <option disabled selected>--wybierz markę pojazdu--</option>
+                        @foreach($marka as $item)
+                            @if($item->id == $pojazd->marka)
+                                <option selected value="{{ $item->id }}">{{ $item->name}}</option>
+                            @else
+                                <option value="{{ $item->id }}">{{ $item->name}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                     @error('marka')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label class="form-label" for="model">Model</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="model" name="model" required="" value="{{$pojazd->model}}">
+                    <select name="model" id="model" class="category">
+                        <option disabled selected>--wybierz model pojazdu--</option>
+                        @foreach($model as $item)
+                            @if($item->id == $pojazd->model)
+                                <option selected value="{{ $item->id }}">{{ $item->name}}</option>
+                            @else
+                                <option value="{{ $item->id }}">{{ $item->name}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                     @error('model')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label" for="wersja">wersja</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="wersja" name="wersja" required="" value="{{$pojazd->wersja}}">
+                    <label class="form-label" for="wersja">Wersja</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="wersja" name="wersja" required="" value="{{ $pojazd->wersja }}">
                     @error('wersja')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="przebieg">Przebieg</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{$pojazd->przebieg}}">
-                    @error('przebieg')
-                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+
                 <div class="mb-3">
                     <label class="form-label" for="stan">Stan</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="stan" name="stan" required="" value="{{$pojazd->stan}}">
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="stan" name="stan" required="" value="{{ $pojazd->stan }}">
                     @error('stan')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label" for="paliwo">Paliwo</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="paliwo" name="paliwo" required="" value="{{$pojazd->paliwo}}">
-                    @error('paliwo')
+                    <label class="form-label" for="przebieg">Przebieg</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{ $pojazd->przebieg }}">
+                    @error('przebieg')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label" for="id_wyp">id_wyp</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="id_wyp" name="id_wyp" required="" value="{{$pojazd->id_wyp}}">
-                    @error('id_wyp')
+                    <label class="form-label" for="typ_pojazdu">Pojemnosc baku</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="pojemnosc_baku" name="pojemnosc_baku" required="" value="{{ $pojazd->pojemnosc_baku }}">
+                    @error('pojemnosc_baku')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="data_wypozyczenia">data_wypozyczenia</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_wypozyczenia" name="data_wypozyczenia" required="" value="{{$pojazd->data_wypozyczenia}}">
-                    @error('data_wypozyczenia')
-                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="data_zwrotu">data_zwrotu</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_zwrotu" name="data_zwrotu" required="" value="{{$pojazd->data_zwrotu}}">
-                    @error('data_zwrotu')
-                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+
                 <div>
                     <button class="btn btn-primary d-block w-100" type="submit">Prześlij</button>
                 </div>

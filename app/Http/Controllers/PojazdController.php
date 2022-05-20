@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pojazd;
+use App\Models\S_marka;
+use App\Models\S_model;
+use App\Models\S_typ_pojazdu;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -22,7 +25,11 @@ class PojazdController extends Controller
     }
 
     public function create() {
-        return view('pojazdy.create');
+        $typ_pojazdu = S_typ_pojazdu::all();
+        $marka = S_marka::all();
+        $model = S_model::all();
+
+        return view('pojazdy.create', ['typ_pojazdu' => $typ_pojazdu, 'marka' => $marka, 'model' => $model]);
     }
 
     public function store(Request $request) {
@@ -43,12 +50,15 @@ class PojazdController extends Controller
     }
 
     public function edit(Pojazd $pojazd) {
-        return view('pojazdy.edit', ['pojazd' => $pojazd]);
+        $typ_pojazdu = S_typ_pojazdu::all();
+        $marka = S_marka::all();
+        $model = S_model::all();
+
+        return view('pojazdy.edit', ['pojazd' => $pojazd, 'typ_pojazdu' => $typ_pojazdu, 'marka' => $marka, 'model' => $model]);
     }
 
     public function update(Request $request, Pojazd $pojazd) {
         $formFields = $request->validate([
-            'nr_pojazdu' => 'required',
             'typ_pojazdu' => 'required',
             'marka' => 'required',
             'model' => 'required',

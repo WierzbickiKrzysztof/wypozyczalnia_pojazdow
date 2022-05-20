@@ -1,5 +1,5 @@
 <x-layout>
-    <h1>Dodaj pojazd</h1>
+    <h2 class="text-center mb-4">Dodaj pojazd</h2>
     <form method="POST" action="/pojazdy">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
@@ -14,39 +14,54 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="typ_pojazdu">Typ pojazdu</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="typ_pojazdu" name="typ_pojazdu" required="" value="{{old('typ_pojazdu')}}">
+                    <select name="typ_pojazdu" id="typ_pojazdu" class="category">
+                        <option disabled selected>--wybierz typ pojazdu--</option>
+                        @foreach($typ_pojazdu as $item)
+                            <option value="{{ $item->id }}">{{ $item->name}}</option>
+                        @endforeach
+                    </select>
                     @error('typ_pojazdu')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="typ_pojazdu">Marka</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="marka" name="marka" required="" value="{{old('marka')}}">
+                    <label class="form-label" for="marka">Marka</label>
+                    <select name="marka" id="marka" class="category">
+                        <option disabled selected>--wybierz markę pojazdu--</option>
+                        @foreach($marka as $item)
+                            <option value="{{ $item->id }}">{{ $item->name}}</option>
+                        @endforeach
+                    </select>
                     @error('marka')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="typ_pojazdu">Model</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="model" name="model" required="" value="{{old('model')}}">
+                    <label class="form-label" for="model">Model</label>
+                    <select name="model" id="model" class="category">
+                        <option disabled selected>--wybierz model pojazdu--</option>
+                        @foreach($model as $item)
+                            <option value="{{ $item->id }}">{{ $item->name}}</option>
+                        @endforeach
+                    </select>
                     @error('model')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="typ_pojazdu">Wersja</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="wersja" name="wersja" required="" value="{{old('wersja')}}">
+                    <label class="form-label" for="wersja">Wersja</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="wersja" name="wersja" required="" value="{{ old('wersja') }}">
                     @error('wersja')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="typ_pojazdu">Stan</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="stan" name="stan" required="" value="{{old('stan')}}">
+                    <label class="form-label" for="stan">Stan</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="stan" name="stan" required="" value="{{ old('stan') }}">
                     @error('stan')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -54,7 +69,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="przebieg">Przebieg</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{old('przebieg')}}">
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{ old('przebieg') }}">
                     @error('przebieg')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -62,7 +77,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="typ_pojazdu">Pojemnosc baku</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="pojemnosc_baku" name="pojemnosc_baku" required="" value="{{old('pojemnosc_baku')}}">
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="pojemnosc_baku" name="pojemnosc_baku" required="" value="{{ old('pojemnosc_baku') }}">
                     @error('pojemnosc_baku')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

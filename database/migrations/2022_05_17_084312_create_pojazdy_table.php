@@ -20,19 +20,22 @@ return new class extends Migration
             $table->string('nr_pojazdu');
 
             //Int - id odwołanie do tabeli słownikowej
-            $table->integer('typ_pojazdu');
+            $table->unsignedBigInteger('typ_pojazdu');
+            $table->foreign('typ_pojazdu')->references('id')->on('S_typ_pojazdu');
 
             //int - id odwołanie do tabeli słownikowej
-            $table->integer('marka');
+            $table->unsignedBigInteger('marka');
+            $table->foreign('marka')->references('id')->on('S_marka');
 
             //int - id odwołanie do tabeli słownikowej
-            $table->integer('model');
+            $table->unsignedBigInteger('model');
+            $table->foreign('model')->references('id')->on('S_model');
 
-            //int - id odwołanie do tabeli słownikowej
-            $table->integer('wersja');
+            //
+            $table->string('wersja');
 
-            //int - id odwołanie do tabeli słownikowej
-            $table->integer('stan');
+            //
+            $table->string('stan');
 
             //przebieg
             $table->integer('przebieg');

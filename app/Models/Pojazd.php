@@ -18,4 +18,16 @@ class Pojazd extends Model
             $query->where('marka', 'like', '%' . request('marka') . '%');
         }
     }
+
+    public function s_typ_pojazdu() {
+        return $this->belongsTo(S_typ_pojazdu::class, 'typ_pojazdu');
+    }
+
+    public function s_marka() {
+        return $this->belongsTo(S_marka::class, 'marka');
+    }
+
+    public function s_model() {
+        return $this->belongsTo(S_model::class, 'model');
+    }
 }
