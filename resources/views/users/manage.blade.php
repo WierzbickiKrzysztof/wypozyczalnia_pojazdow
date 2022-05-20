@@ -1,10 +1,10 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage_show">Lista Pracowników</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pracownicy.manage_show') }}">Lista Pracowników</a>
 
     </div>
     <h1>Dodaj Pracownika</h1>
-    <form method="POST" action="/users/manage_show">
+    <form method="POST" action="{{ route('pracownicy.manage_show') }}">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">

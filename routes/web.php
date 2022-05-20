@@ -41,14 +41,14 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/users/manage_show', [UserController::class, 'index'])->name('pracownicy.index');
 
 
-Route::get('/users/manage', [UserController::class, 'manage']); //->middleware('auth');
+Route::get('/users/manage', [UserController::class, 'manage'])->name('pracownicy.manage'); //->middleware('auth');
 Route::post('/users/manage/add', [UserController::class, 'manage_store']); //->middleware('auth');
 
 Route::get('/users/manage_edit/{user}', [UserController::class, 'edit']); //->middleware('auth');
 Route::post('/users', [UserController::class, 'store_edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy']); //->middleware('auth');
+Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy'])->name('pracownicy.manage_show'); //->middleware('auth');
 
 
 // Pojazdy //

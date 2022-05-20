@@ -1,6 +1,6 @@
 <x-layout>
     <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/users/manage">Dodaj Pracownika</a>
+        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pracownicy.manage') }}">Dodaj Pracownika</a>
 
     </div>
     <h1>Lista Pracowników</h1>
