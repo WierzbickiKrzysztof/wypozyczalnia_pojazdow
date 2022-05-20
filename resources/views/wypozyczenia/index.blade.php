@@ -4,19 +4,38 @@
 
 
     </div>
-    <h2 class="text-center mb-4">Lista wypozyczen</h2>
-    @foreach($wypozyczenia as $Wypozyczenie)
-        <h1>ID Klienta: <a href="#{{ $Wypozyczenie->id }}">{{ $Wypozyczenie->id_klienta }}</a></h1>
-        <h2>ID Pojazdu: {{ $Wypozyczenie->id_pojazdu }}</h2>
-        <h3>Kwota wypożyczenia (dzień): {{ $Wypozyczenie->kowta_wypozyczenia_dzien }}</h3>
-        <h3>Data rozpoczęcia: {{ $Wypozyczenie->data_rozpoczecia }}</h3>
-        <h3>Data zakończenia: {{ $Wypozyczenie->data_zakonczenia }}</h3>
-        <h3>Dodatkowe ubezpieczenie: {{ $Wypozyczenie->dod_ubezpieczenie }}</h3>
-        <h3>Skan umowy: {{ $Wypozyczenie->skan_umowy }}</h3>
 
+    <h2 class="text-center mb-4">Lista wypożyczeń</h2>
+
+    <table>
+        <tr>
+            <th>ID Klienta</th>
+            <th>ID Pojazdu</th>
+            <th>Kwota wypożyczenia (dzień)</th>
+            <th>Data rozpoczęcia</th>
+            <th>Data zakończenia</th>
+            <th>Dodatkowe ubezpieczenie</th>
+            <th>Skan umowy</th>
+        </tr>
+
+
+    @foreach($wypozyczenia as $Wypozyczenie)
+
+        <tr>
+            <th> <a href="#{{ $Wypozyczenie->id }}">{{ $Wypozyczenie->id_klienta }}</a></th>
+            <th> {{ $Wypozyczenie->id_pojazdu }}</th>
+            <th> {{ $Wypozyczenie->kowta_wypozyczenia_dzien }}</th>
+            <th> {{ $Wypozyczenie->data_rozpoczecia }}</th>
+            <th> {{ $Wypozyczenie->data_zakonczenia }}</th>
+            <th> {{ $Wypozyczenie->dod_ubezpieczenie }}</th>
+            <th> {{ $Wypozyczenie->skan_umowy }}</th>
+        </tr>
     @endforeach
+    </table>
+
 
     {{--    <div class="mt-6 p-4">--}}
     {{--        {{ $pojazdy->links() }}--}}
     {{--    </div>--}}
 </x-layout>
+
