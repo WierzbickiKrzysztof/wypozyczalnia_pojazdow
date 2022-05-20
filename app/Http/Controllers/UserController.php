@@ -110,7 +110,7 @@ class UserController extends Controller
         $user = User::create($formFields);
 
 
-        return redirect('/')->with('message', 'Użytkownik stworzony');
+        return redirect('/users/manage_show/')->with('message', 'Użytkownik stworzony');
     }
 
 
