@@ -45,7 +45,7 @@ Route::get('/users/manage', [UserController::class, 'manage'])->name('pracownicy
 Route::post('/users/manage/add', [UserController::class, 'manage_store'])->name('pracownicy.add'); //->middleware('auth');
 
 Route::get('/users/manage_edit/{user}', [UserController::class, 'edit']); //->middleware('auth');
-Route::post('/users', [UserController::class, 'store_edit']);
+//Route::post('/users', [UserController::class, 'store_edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 Route::delete('/users/manage_show/{user}', [UserController::class, 'destroy']); //->middleware('auth');

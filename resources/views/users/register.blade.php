@@ -26,6 +26,15 @@
                         </div>
 
                         <div class="form-outline mb-4">
+                            <input type="text" id="telefon" class="form-control form-control-lg" name="telefon" value="{{ old('telefon') }}">
+                            <label class="form-label" for="telefon">Telefon</label>
+
+                            @error('telefon')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="form-outline mb-4">
                             <input type="password" id="password" class="form-control form-control-lg" name="password" value="{{ old('password') }}">
                             <label class="form-label" for="password">Hasło</label>
 
