@@ -9,7 +9,7 @@ class Pojazd extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nr_pojazdu', 'typ_pojazdu', 'marka', 'model', 'wersja', 'stan', 'przebieg', 'pojemnosc_baku'];
+    protected $fillable = ['nr_pojazdu', 'typ_pojazdu', 'marka', 'model', 'wersja', 'stan', 'przebieg', 'pojemnosc_baku', 'cena'];
 
     protected $table = 'pojazdy';
 

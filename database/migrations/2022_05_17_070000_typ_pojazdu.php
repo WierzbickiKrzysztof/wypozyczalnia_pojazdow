@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('S_typ_pojazdu', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('typ_pojazdu');          //suv, coupe itd
             $table->timestamps();
         });
     }

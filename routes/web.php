@@ -118,3 +118,8 @@ Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('o
 // SHOW: Wyświetlenie wybranego wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'show']); //->middleware('auth');
 
+//Cennik
+Route::get('/cennik', function () {
+    return view('cennik.index');
+})->name('cennik.index') ;;
+

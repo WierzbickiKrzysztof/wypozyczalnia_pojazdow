@@ -43,6 +43,9 @@ return new class extends Migration
             //
             $table->integer('pojemnosc_baku');
 
+            //
+            $table->float('cena');
+
 
             $table->timestamps();
         });
