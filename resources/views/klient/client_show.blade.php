@@ -1,15 +1,13 @@
 <x-layout>
-    <head>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
-        <script src="/public/assets/css/tabelka.css" ></script>
+        <script src="{{ asset('/assets/css/tabelka.css') }}"></script>
 
-    </head>
-    <body>
     <div class="container-fluid" style="margin-bottom: 50px;">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-6">
@@ -44,9 +42,10 @@
                                     <td style="color: rgb(255,255,255);">{{ $users->name }}</td>
                                     <td style="color: rgb(255,255,255);">{{ $users->telefon }}</td>
                                     <td style="color: rgb(255,255,255);">{{ $users->email}}</td>
-                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btnMaterial btn-flat success semicircle" role="button" href="/klient/client_edit/{{ $users->id }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
+                                    <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('klient.edit', ['user' => $users->id]) }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
 
-                                        <form method="POST" action="/klient/client_show/{{ $users->id }}">
+                                        <form method="POST" action="{{ route('klient.destroy', ['user' => $users->id]) }}">
+
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btnMaterial btn-flat accent btnNoBorders checkboxHover" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fas fa-trash btnNoBorders" style="color: #DC3545;"></i></button>
@@ -63,5 +62,5 @@
             </div>
         </div>
     </div>
-    </body>
+
 </x-layout>

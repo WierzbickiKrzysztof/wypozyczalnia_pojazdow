@@ -1,5 +1,5 @@
 <x-layout>
-    <head>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js" ></script>
@@ -7,8 +7,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
         <script src="/public/assets/css/tabelka.css" ></script>
-    </head>
-    <body>
+
+
         <div class="container-fluid" style=" margin-bottom: 50px;">
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6">
@@ -52,5 +52,5 @@
                 </div>
             </div>
         </div>
-    </body>
+
 </x-layout>
