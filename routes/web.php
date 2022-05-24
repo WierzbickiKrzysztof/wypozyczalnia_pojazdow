@@ -4,6 +4,7 @@ use App\Http\Controllers\PojazdController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KlientController;
 use App\Http\Controllers\WypozyczeniaController;
+use App\Http\Controllers\OpcjeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -101,6 +102,10 @@ Route::get('wypozyczenia/generate', function (){
 })->name('wypozyczenia.generate') ;
 
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report') ;
+
+
+// lista dodatkowych opcji
+Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('opcje.index');
 
 // SHOW: Formularz edytowania wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
