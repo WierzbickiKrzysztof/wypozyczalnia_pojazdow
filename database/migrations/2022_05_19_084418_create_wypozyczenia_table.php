@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('kowta_wypozyczenia_dzien');
             $table->date('data_rozpoczecia');
             $table->date('data_zakonczenia');
+            $table->date('data_zwrotu')->nullable();
+            $table->unsignedBigInteger('id_zwrotu')->default(1);
             $table->boolean('dod_ubezpieczenie');
             $table->integer('skan_umowy');
 

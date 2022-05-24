@@ -25,7 +25,6 @@ class PojazdFactory extends Factory
             'przebieg' => $this->faker->numberBetween(1000, 600000),
             'stan' => 'sprawny',
             'paliwo' => $this->faker->numberBetween(1,10),
-            'cena' => $this->faker->numberBetween(1, 6000),
             'id_wyp' => $this->faker->numberBetween(1,30),
             'data_wypozyczenia' => $this->faker->dateTimeBetween('-8 week'),
             'data_zwrotu' => $this->faker->dateTimeBetween('-7 week', '+3 week')

@@ -83,14 +83,6 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="cena">Cena</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="cena" name="cena" required="" value="{{ old('cena') }}">
-                    @error('cena')
-                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
                 <div>
                     <button class="btn btn-primary d-block w-100" type="submit">Prześlij</button>
                 </div>

@@ -110,7 +110,7 @@ Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('o
 // SHOW: Formularz edytowania wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
 // UPDATE: Aktualizacja wypożyczenia
-//Route::put('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'update']);
+Route::get('/wypozyczenia/{wypozyczenia}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update');
 
 // DESTROY: Usunięcie wypożyczenia
 //Route::delete('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'destroy']); //->middleware('auth');
@@ -118,8 +118,5 @@ Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('o
 // SHOW: Wyświetlenie wybranego wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'show']); //->middleware('auth');
 
-//Cennik
-Route::get('/cennik', function () {
-    return view('cennik.index');
-})->name('cennik.index') ;;
+
 

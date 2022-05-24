@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('S_typ_pojazdu', function (Blueprint $table) {
+        Schema::create('zwroty', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('S_typ_pojazdu');
+        Schema::dropIfExists('zwroty');
     }
 };

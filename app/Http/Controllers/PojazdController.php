@@ -41,8 +41,7 @@ class PojazdController extends Controller
             'wersja' => 'required',
             'stan' => 'required',
             'przebieg' => 'required',
-            'pojemnosc_baku' => 'required',
-            'cena' => 'required'
+            'pojemnosc_baku' => 'required'
         ]);
 
         Pojazd::create($formFields);

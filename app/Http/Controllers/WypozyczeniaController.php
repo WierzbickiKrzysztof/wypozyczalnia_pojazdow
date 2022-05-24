@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Klient;
 use App\Models\Pojazd;
+use App\Models\Zwroty;
 use Illuminate\Http\Request;
 use App\Models\Wypozyczenie;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 
 
 class WypozyczeniaController extends Controller
@@ -16,7 +19,8 @@ class WypozyczeniaController extends Controller
     //funkcja 1 działająca
     public function index(){
         $wypozyczenia = Wypozyczenie::all();
-         return view('wypozyczenia.index', ['wypozyczenia' => $wypozyczenia]);
+        $zwrot = Zwroty::all();
+         return view('wypozyczenia.index',  compact('zwrot', 'wypozyczenia'));
     }
 
     public function create() {
@@ -50,4 +54,16 @@ class WypozyczeniaController extends Controller
 
         return view('wypozyczenia.report', ['wypozyczenia' => $data])->with(['data_p'=>$data_p, 'data_k'=>$data_k]);
     }
+    public function update(Request $request, Wypozyczenie $wypozyczenia)
+    {
+        $date=date("Y-m-d");
+        $index=$wypozyczenia->id;
+        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$index'");
+
+
+
+
+        return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
+    }
+
 }

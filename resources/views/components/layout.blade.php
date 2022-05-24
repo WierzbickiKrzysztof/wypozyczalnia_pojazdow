@@ -26,7 +26,6 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('pojazdy.index') }}">Pojazdy</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('wypozyczenia.index') }}">Wypożyczenia</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('pracownicy.index') }}">Pracownicy</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('cennik.index') }}">Cennik</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
             </ul>
             <ul class="navbar-nav ms-auto">

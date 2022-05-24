@@ -16,13 +16,14 @@
     @foreach($wypozyczenia as $Wypozyczenie)
 
         <tr>
-            <th> <a href="#{{ $Wypozyczenie->id }}">{{ $Wypozyczenie->id_klienta }}</a></th>
-            <th> {{ $Wypozyczenie->id_pojazdu }}</th>
-            <th> {{ $Wypozyczenie->kowta_wypozyczenia_dzien }}</th>
-            <th> {{ $Wypozyczenie->data_rozpoczecia }}</th>
-            <th> {{ $Wypozyczenie->data_zakonczenia }}</th>
-            <th> {{ $Wypozyczenie->dod_ubezpieczenie }}</th>
-            <th> {{ $Wypozyczenie->skan_umowy }}</th>
+            <td> <a href="#{{ $Wypozyczenie->id }}">{{ $Wypozyczenie->id_klienta }}</a></td>
+            <td> {{ $Wypozyczenie->id_pojazdu }}</td>
+            <td> {{ $Wypozyczenie->kowta_wypozyczenia_dzien }}</td>
+            <td> {{ $Wypozyczenie->data_rozpoczecia }}</td>
+            <td> {{ $Wypozyczenie->data_zakonczenia }}</td>
+            <td> {{ $Wypozyczenie->dod_ubezpieczenie }}</td>
+            <td> {{ $Wypozyczenie->skan_umowy }}</td>
+
         </tr>
 
     @endforeach

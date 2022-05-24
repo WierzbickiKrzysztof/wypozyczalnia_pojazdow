@@ -19,7 +19,6 @@ class S_typ_pojazduFactory extends Factory
     {
         return [
             'name' => 'Samochód osobowy',
-            'typ_pojazdu' => 'Sedan'
         ];
     }
 }
