@@ -52,3 +52,6 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+#id_klienta {
+    width: 100%;
+}

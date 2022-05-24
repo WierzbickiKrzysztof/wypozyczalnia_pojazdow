@@ -1,4 +1,5 @@
 <x-layout>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
     <h1>Dodaj wypozyczenie</h1>
     <form method="POST" action="{{ route('wypozyczenia.store') }}">
         @csrf
@@ -50,6 +51,16 @@
                     @error('data_zakonczenia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
+                    <script>
+                        var today = new Date();
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0');
+                        var yyyy = today.getFullYear();
+
+                        today = yyyy + '-' + mm + '-' + dd;
+                        $('#data_rozpoczecia').attr('min',today);
+                        $('#data_zakonczenia').attr('min',today);
+                    </script>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="dod_ubezpieczenie">Dodatkowe ubezpieczenie</label>
