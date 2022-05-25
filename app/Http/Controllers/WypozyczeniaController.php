@@ -44,6 +44,8 @@ class WypozyczeniaController extends Controller
 
         return redirect('/wypozyczenia')->with('message', 'Wypozyczenie dodane pomyslnie!');
     }
+
+
     public function showReport(Request $request) {
         $data_p = $request->data_rozpoczecia;
         $data_k = $request->data_zakonczenia;

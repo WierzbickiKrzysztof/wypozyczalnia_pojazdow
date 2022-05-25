@@ -6,7 +6,7 @@
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
                 <div class="mb-3">
-                    <label class="form-label" for="id_klienta">Klienta</label>
+                    <label class="form-label" for="id_klienta">Klient</label>
 
                     <select name="id_klienta" id="id_klienta" class="category">
                         <option disabled selected>--wybierz klienta--</option>

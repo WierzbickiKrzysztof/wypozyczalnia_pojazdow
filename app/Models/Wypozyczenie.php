@@ -23,4 +23,5 @@ class Wypozyczenie extends Model
     {
         return $this->hasOne(Zwroty::class, 'id_zwrotu');
     }
+
 }

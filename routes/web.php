@@ -118,5 +118,22 @@ Route::get('/wypozyczenia/{wypozyczenia}', [WypozyczeniaController::class, 'upda
 // SHOW: Wyświetlenie wybranego wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'show']); //->middleware('auth');
 
+//Cennik
+Route::get('/cennik', function () {
+    return view('cennik.index');
+})->name('cennik.index') ;;
+
+//Mapy (lokalizacja)
+Route::get('/localisation', function () {
+    return view('localisation');
+})->name('localisation') ;;
+
+//roboczo
+Route::get('wypozyczenia/customer/rent', function (){
+    return view('wypozyczenia.createWypozyczenieClient');
+})->name('wypozyczenia.clientRent') ;
+
+
+
 
 

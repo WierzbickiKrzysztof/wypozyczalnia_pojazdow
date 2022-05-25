@@ -1,25 +1,26 @@
 <x-layout>
-    <div>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pojazdy.create') }}">Dodaj pojazd</a>
-        <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('opcje.index') }}">Dodatkowe Opcje</a>
-
-    </div>
     <h2 class="text-center mb-4">Lista pojazdów</h2>
 
-    <table>
+    <table class="table table-dark">
         <tr>
-            <th>NR pojazdu</th>
-            <th>Typ pojazdu</th>
-            <th colspan="3">Pojazd</th>
-            <th>Stan</th>
+            <th scope="col">NR pojazdu</th>
+            <th scope="col">Kategoria pojazdu</th>
+            <th scope="col">Typ pojazdu</th>
+            <th scope="col" colspan="3">Pojazd</th>
+            <th scope="col">Stan</th>
+            <th scope="col">Cena</th>
+            <th scope="col">Opcja</th>
         </tr>
 
         @foreach($pojazdy as $pojazd)
-            <tr>
+            <tr scope="row">
                 <td><a href="{{ route('pojazdy.show', ['pojazd' => $pojazd->id]) }}">{{ $pojazd->nr_pojazdu }}</a></td>
                 <td>{{ $pojazd->s_typ_pojazdu->name }}</td>
+                <td>{{ $pojazd->s_typ_pojazdu->typ_pojazdu }}</td>
                 <td colspan="3">{{ $pojazd->s_model->name }} {{ $pojazd->s_marka->name }} {{ $pojazd->wersja }}</td>
                 <td>{{ $pojazd->stan }}</td>
+                <td>{{ $pojazd->cena }} zł</td>
+                <td style="text-align: center"><a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a></td>
             </tr>
 
         @endforeach
