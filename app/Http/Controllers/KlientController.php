@@ -66,8 +66,10 @@ class KlientController extends Controller
 
             'name' => 'required',
             'telefon' => 'required',
-            'email' => 'required'
-           // 'type' =>
+            'email' => 'required',
+            'skan_dowod' => 'required',
+            'skan_prawko'=> 'required'
+            // 'type' =>
         ]);
 
         $user->update($formFields);
@@ -80,7 +82,9 @@ class KlientController extends Controller
         $formFields = $request->validate([
             'name' => 'required',
             'telefon' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'skan_dowod' => 'required',
+            'skan_prawko' => 'required'
         ]);
 
     }

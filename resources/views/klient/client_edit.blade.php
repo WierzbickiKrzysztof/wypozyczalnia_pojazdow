@@ -30,6 +30,20 @@
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <label class="form-label" for="skan_prawko">skan_prawko</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="skan_prawko" name="skan_prawko" required="" value="{{$user->skan_prawko}}">
+                    @error('skan_prawko')
+                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="skan_dowod">skan_dowod</label>
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="skan_dowod" name="skan_dowod" required="" value="{{$user->skan_dowod}}">
+                    @error('skan_dowod')
+                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
                 <div>
                     <button class="btn btn-primary d-block w-100" type="submit">Zaktualizuj</button>
                 </div>

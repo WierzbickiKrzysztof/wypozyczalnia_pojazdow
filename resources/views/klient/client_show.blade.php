@@ -33,6 +33,8 @@
                                 <th class="text-center" style="color: rgb(255,255,255);">Dane</th>
                                 <th class="text-center" style="color: rgb(255,255,255);">Telefon</th>
                                 <th class="text-center" style="color: rgb(255,255,255);">Email</th>
+                                <th class="text-center" style="color: rgb(255,255,255);">Skan Dowodu</th>
+                                <th class="text-center" style="color: rgb(255,255,255);">Skan Prawka</th>
                                 <th class="text-center filter-false sorter-false" style="color: rgb(255,255,255);">Akcje</th>
                             </tr>
                             </thead>
@@ -42,6 +44,8 @@
                                     <td style="color: rgb(255,255,255);">{{ $users->name }}</td>
                                     <td style="color: rgb(255,255,255);">{{ $users->telefon }}</td>
                                     <td style="color: rgb(255,255,255);">{{ $users->email}}</td>
+                                    <td style="color: rgb(255,255,255);">{{ $users->skan_dowod}}</td>
+                                    <td style="color: rgb(255,255,255);">{{ $users->skan_prawko}}</td>
                                     <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('klient.edit', ['user' => $users->id]) }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
 
                                         <form method="POST" action="{{ route('klient.destroy', ['user' => $users->id]) }}">

@@ -23,6 +23,8 @@ class User extends Authenticatable
         'telefon',
         'password',
         'typ_konta',
+        'skan_dowod',
+        'skan_prawko'
     ];
 
     protected $table = 'users';
