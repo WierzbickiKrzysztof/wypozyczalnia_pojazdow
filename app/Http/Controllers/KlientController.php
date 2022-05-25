@@ -98,6 +98,8 @@ class KlientController extends Controller
             'telefon' => [ 'min:9'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
+            'skan_dowod' => 'required',
+            'skan_prawko' => 'required'
         ]);
 
         // Hash hasła
