@@ -48,7 +48,7 @@
                                     <td style="color: rgb(255,255,255);">{{ $users->skan_prawko}}</td>
                                     <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('klient.edit', ['user' => $users->id]) }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
 
-                                        <form method="POST" action="{{ route('klient.destroy', ['user' => $users->id]) }}">
+                                        <form method="POST" class="d-inline" action="{{ route('klient.destroy', ['user' => $users->id]) }}">
 
                                             @csrf
                                             @method('DELETE')

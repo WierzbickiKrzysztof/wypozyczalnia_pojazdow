@@ -48,10 +48,10 @@
                                     <td style="color: rgb(255,255,255);">{{ $users->telefon }}</td>
                                     <td style="color: rgb(255,255,255);">{{ $users->email}}</td>
                                     <td class="text-center align-middle" style="max-height: 60px;height: 60px;"><a class="btn btnMaterial btn-flat success semicircle" role="button" href="/users/manage_edit/{{ $users->id }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
-                                        <form method="POST" action="{{ route('pracownicy.destroy', ['user' => $users->id]) }}">
+                                        <form method="POST" class="d-inline" action="{{ route('pracownicy.destroy', ['user' => $users->id]) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btnMaterial btn-flat accent btnNoBorders checkboxHover" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fas fa-trash btnNoBorders" style="color: #DC3545;"></i></button>
+                                            <button class="btn btnMaterial btn-flat accent btnNoBorders checkboxHover" type="submit" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fas fa-trash btnNoBorders" style="color: #DC3545;"></i></button>
 
                                         </form>
 
