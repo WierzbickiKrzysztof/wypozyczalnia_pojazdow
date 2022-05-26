@@ -102,7 +102,7 @@ Route::get('wypozyczenia/generate', function (){
 })->name('wypozyczenia.generate')->middleware('auth');
 
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
-
+Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth');
 
 // lista dodatkowych opcji
 Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('opcje.index');

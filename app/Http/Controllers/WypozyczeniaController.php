@@ -67,5 +67,11 @@ class WypozyczeniaController extends Controller
 
         return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
     }
+    public function latereturn(){
+        return view('wypozyczenia.indexlate', [
 
+            'wypozyczenia' => Wypozyczenie::whereColumn('data_zwrotu' , '>' , 'data_zakonczenia')->get()
+
+        ]);
+    }
 }
