@@ -28,7 +28,7 @@
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
             </ul>
             <ul class="navbar-nav ms-auto">
-{{--                @auth--}}
+                @auth
 
                     <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('pracownicy.index') }}">Panel Pracownika</a></li>
                     <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a></li>
@@ -38,10 +38,10 @@
                             Wyloguj się
                         </button></li>
                     </form>
-{{--                @else--}}
+                @else
                     <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('user.register') }}">Rejestracja</a></li>
                     <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="{{ route('login') }}">Logowanie</a></li>
-{{--                @endauth--}}
+                @endauth
             </ul>
         </div>
     </div>
