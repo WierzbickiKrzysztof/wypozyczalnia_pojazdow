@@ -162,8 +162,11 @@ Route::get('wypozyczenia/customer/rent', function (){
 
 
 
+//Panel klienta
+Route::get('/users/panel_klienta', [UserController::class, 'index_panelu_klienta'])->name('panel_klienta')->middleware('auth', 'can:klient');
 
-
+//Przycisk historia_wypozyczen w panelu_klienta
+Route::get('/users/history', [UserController::class, 'show_history'])->name('users.history')->middleware('auth', 'can:klient');     // Tutaj potrzebna autoryzacja?
 
 
 

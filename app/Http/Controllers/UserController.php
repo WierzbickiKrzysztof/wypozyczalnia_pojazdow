@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Wypozyczenie;
+use App\Models\Zwroty;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use function MongoDB\Driver\Monitoring\removeSubscriber;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -141,4 +144,24 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Niepoprawne dane logowania'])->onlyInput('email');
     }
+
+    //wyswietlenie panelu klienta
+    public function index_panelu_klienta(){
+        return view('users.panel_klienta');
+    }
+
+    //metoda do wyswietlenia historii wypozyczen danego klienta
+    public function show_history(){
+        return view('users.history', [
+
+            'wypozyczenia' => Wypozyczenie::where('id_klienta' ,Auth::id())->get(),
+            'zwrot' => Zwroty::where('id', '1')
+            // ^
+            // |
+            // |
+            // tutaj trzeba pomyslec jak to zrobic jeszcze bo jest problem w history.blade.php
+
+        ]);
+    }
+
 }

@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('pracownicy.index') }}">Panel Pracownika</a></li>
                     @endcan
                     @cannot('pracownik')
-                        <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="#">Panel Klienta</a></li>
+                        <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="{{ route('panel_klienta') }}">Panel Klienta</a></li>
                     @endcannot
                     <form class="inline" method="POST" action="{{ route('user.logout') }}">
                         @csrf
