@@ -69,7 +69,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="przebieg">Przebieg</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{ old('przebieg') }}">
+                    <input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" id="przebieg" name="przebieg" required="" value="{{ old('przebieg') }}">
                     @error('przebieg')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -77,7 +77,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="typ_pojazdu">Pojemnosc baku</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="pojemnosc_baku" name="pojemnosc_baku" required="" value="{{ old('pojemnosc_baku') }}">
+                    <input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" id="pojemnosc_baku" name="pojemnosc_baku" required="" value="{{ old('pojemnosc_baku') }}">
                     @error('pojemnosc_baku')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -85,7 +85,7 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="cena">Cena</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="cena" name="cena" required="" value="{{ old('cena') }}">
+                    <input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" id="cena" name="cena" required="" value="{{ old('cena') }}" min="0" value="0" step=".01">
                     @error('cena')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

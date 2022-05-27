@@ -68,10 +68,8 @@ class WypozyczeniaController extends Controller
         return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
     }
     public function latereturn(){
-        return view('wypozyczenia.indexlate', [
-
-            'wypozyczenia' => Wypozyczenie::whereColumn('data_zwrotu' , '>' , 'data_zakonczenia')->get()
-
-        ]);
+        $date=date("Y-m-d");
+        $wypozyczenia = Wypozyczenie::whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->get();
+        return view('wypozyczenia.indexlate',['wypozyczenia'=>$wypozyczenia]);
     }
 }

@@ -111,35 +111,59 @@ Route::get('wypozyczenia/generate', function (){
 
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
 Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth', 'can:pracownik');
-
-// lista dodatkowych opcji
-Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('opcje.index');
-
-// SHOW: Formularz edytowania wypożyczenia
-//Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
 // UPDATE: Aktualizacja wypożyczenia
 Route::get('/wypozyczenia/{wypozyczenia}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update')->middleware('auth', 'can:pracownik');
+
 
 // DESTROY: Usunięcie wypożyczenia
 //Route::delete('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'destroy']); //->middleware('auth');
 
 // SHOW: Wyświetlenie wybranego wypożyczenia
 //Route::get('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'show']); //->middleware('auth');
+// SHOW: Formularz edytowania wypożyczenia
+//Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
+// lista dodatkowych opcji
+Route::get('/opcje/dodatkowe_opcje', [OpcjeController::class, 'index'])->name('opcje.index');
+
+//Wyświetlanie formularza dodawani wyposażenia
+Route::get('/opcje', function () {
+    return view('opcje.dodaj_opcje');
+})->name('opcje.dodaj_opcje') ;
+
+
+
+// SHOW: Formularz dodawania dodatkowego wyposzazenia
+Route::get('/opcje/dodaj_opcje', [OpcjeController::class, 'create'])->name('opcje.create')->middleware('auth', 'can:pracownik');
+Route::get('/opcje/edytuj_opcje/{opcje}', [OpcjeController::class, 'edit'])->name('opcje.edytuj_opcje')->middleware('auth', 'can:pracownik');
+Route::post('/opcje/edytuj_opcje/{opcje}', [PojazdController::class, 'update'])->name('opcje.update')->middleware('auth', 'can:pracownik');
+Route::post('/opcje', [KlientController::class, 'store_opcje_edit']);
+
+
+//Route::get('/klient/client_edit/{user}', [KlientController::class, 'edit'])->name('klient.edit')->middleware('auth', 'can:pracownik');
+//Route::post('/klient', [KlientController::class, 'store_client_edit']);
+
+//Route::put('/klient/{user}', [KlientController::class, 'update'])->name('klient.update');
+
 
 //Cennik
 Route::get('/cennik', function () {
     return view('cennik.index');
-})->name('cennik.index') ;;
+})->name('cennik.index') ;
 
 //Mapy (lokalizacja)
 Route::get('/localisation', function () {
     return view('localisation');
-})->name('localisation') ;;
+})->name('localisation') ;
 
 //roboczo
 Route::get('wypozyczenia/customer/rent', function (){
     return view('wypozyczenia.createWypozyczenieClient');
 })->name('wypozyczenia.clientRent') ;
+
+
+
+
+
 
 
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('opis');
             $table->decimal('cena',11,2);
+            $table->timestamps();
         });
     }
 

@@ -13,8 +13,7 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6">
                     <h3 class="text-white mb-4">Lista Opcji dodatkowych</h3>
-                    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="/opcje/dodaj_opcje">Dodaj wyposażenie</a>
-                </div>
+                    <td style="text-align: center"><a class="btn btn-primary text-center " role="button" href="{{ route('opcje.dodaj_opcje') }}">Dodaj Wyposażenie</a></td>                </div>
             </div>
             <div id="TableSorterCard" class="card" style="border-style: none;border-radius: 6.5px;">
                 <div class="card-header py-3" style="border-width: 0px;background: rgb(23,25,33);">
