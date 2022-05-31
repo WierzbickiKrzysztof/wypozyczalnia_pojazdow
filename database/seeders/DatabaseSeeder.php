@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
              'email' => 't@t'
              // hasło: password
          ]);
+        $this->call([
+            ZwrotySeeder::class
+        ]);
 
         //Pojazd::factory(6)->create();
 
