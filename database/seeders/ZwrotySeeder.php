@@ -18,7 +18,7 @@ class ZwrotySeeder extends Seeder
     {
         DB::table('zwroty')->insert([
 
-            'name'=>'Nie zwrócony'
+            'name'=>'Niezwrócony'
         ]);
 
         DB::table('zwroty')->insert([

@@ -154,13 +154,7 @@ class UserController extends Controller
     public function show_history(){
         return view('users.history', [
 
-            'wypozyczenia' => Wypozyczenie::where('id_klienta' ,Auth::id())->get(),
-            'zwrot' => Zwroty::where('id', '1')
-            // ^
-            // |
-            // |
-            // tutaj trzeba pomyslec jak to zrobic jeszcze bo jest problem w history.blade.php
-
+            'wypozyczenia' => Wypozyczenie::where('id_klienta' ,Auth::id())->get()
         ]);
     }
 
