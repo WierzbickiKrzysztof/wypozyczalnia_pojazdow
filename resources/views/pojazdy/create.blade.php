@@ -78,10 +78,8 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="cena">Cena</label>
-                    <input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" id="cena" name="cena" required="" value="{{ old('cena') }}" min="0" value="0" step=".01">
-                    @error('cena')
-                    <p class="text-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
+                    <input class="form-control" disabled type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="cena" name="cena" required="" value="">
+
                 </div>
 
                 <div>
