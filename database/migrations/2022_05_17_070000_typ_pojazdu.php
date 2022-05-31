@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('typ_pojazdu');          //suv, coupe itd
+            $table->float('cena');
             $table->timestamps();
         });
     }

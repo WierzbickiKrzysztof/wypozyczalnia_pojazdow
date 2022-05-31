@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('S_model', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('id_marka');
             $table->timestamps();
         });
     }

@@ -26,10 +26,8 @@ class PojazdController extends Controller
 
     public function create() {
         $typ_pojazdu = S_typ_pojazdu::all();
-        $marka = S_marka::all();
-        $model = S_model::all();
 
-        return view('pojazdy.create', ['typ_pojazdu' => $typ_pojazdu, 'marka' => $marka, 'model' => $model]);
+        return view('pojazdy.create', ['typ_pojazdu' => $typ_pojazdu]);
     }
 
     public function store(Request $request) {
@@ -41,8 +39,8 @@ class PojazdController extends Controller
             'wersja' => 'required',
             'stan' => 'required',
             'przebieg' => 'required',
-            'pojemnosc_baku' => 'required',
-            'cena' => 'required'
+            'pojemnosc_baku' => 'required'
+
         ]);
 
         Pojazd::create($formFields);

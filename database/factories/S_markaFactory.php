@@ -19,6 +19,7 @@ class S_markaFactory extends Factory
     {
         return [
             'name' => 'Toyota',
+            'id_typ_pojazdu' => 1
         ];
     }
 }

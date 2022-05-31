@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('S_marka', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('id_typ_pojazdu');
             $table->timestamps();
         });
     }

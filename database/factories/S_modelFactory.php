@@ -19,6 +19,7 @@ class S_modelFactory extends Factory
     {
         return [
             'name' => 'Yaris',
+            'id_marka' => 1
         ];
     }
 }

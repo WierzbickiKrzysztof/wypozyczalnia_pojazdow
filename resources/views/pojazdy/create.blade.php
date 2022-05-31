@@ -17,21 +17,17 @@
                     <select name="typ_pojazdu" id="typ_pojazdu" class="category">
                         <option disabled selected>--wybierz typ pojazdu--</option>
                         @foreach($typ_pojazdu as $item)
-                            <option value="{{ $item->id }}">{{ $item->name}}</option>
+                            <option value="{{ $item->id }}">{{ $item->name}} | {{ $item->typ_pojazdu }}</option>
                         @endforeach
                     </select>
                     @error('typ_pojazdu')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label" for="marka">Marka</label>
                     <select name="marka" id="marka" class="category">
-                        <option disabled selected>--wybierz markę pojazdu--</option>
-                        @foreach($marka as $item)
-                            <option value="{{ $item->id }}">{{ $item->name}}</option>
-                        @endforeach
+                        <option disabled selected>--najpierw wybierz typ pojazdu--</option>
                     </select>
                     @error('marka')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
@@ -41,10 +37,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="model">Model</label>
                     <select name="model" id="model" class="category">
-                        <option disabled selected>--wybierz model pojazdu--</option>
-                        @foreach($model as $item)
-                            <option value="{{ $item->id }}">{{ $item->name}}</option>
-                        @endforeach
+                        <option disabled selected>--najpierw wybierz typ pojazdu--</option>
                     </select>
                     @error('model')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>

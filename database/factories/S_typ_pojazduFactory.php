@@ -19,7 +19,8 @@ class S_typ_pojazduFactory extends Factory
     {
         return [
             'name' => 'Samochód osobowy',
-            'typ_pojazdu' => 'Sedan'
+            'typ_pojazdu' => 'Sedan',
+            'cena' => '2137.72'
         ];
     }
 }

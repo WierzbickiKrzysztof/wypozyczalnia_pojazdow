@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\PojazdController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KlientController;
@@ -161,6 +162,7 @@ Route::get('wypozyczenia/customer/rent', function (){
 })->name('wypozyczenia.clientRent') ;
 
 
+Route::post('api/get/{type}', [AjaxController::class, 'getAjax']);
 
 //Panel klienta
 Route::get('/users/panel_klienta', [UserController::class, 'index_panelu_klienta'])->name('panel_klienta')->middleware('auth', 'can:klient');
