@@ -1,21 +1,12 @@
 <x-layout>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-        function change(){
-            var select = document.getElementById("id_pojazdu");
-            var text = select.options[select.selectedIndex].text;
-            var cut = text.split("PLN: ").pop();
-            var price = parseInt(cut);
-            document.getElementById("kowta_wypozyczenia_dzien").value= price;
-        }
-    </script>
     <h1>Dodaj wypozyczenie</h1>
     <form method="POST" action="{{ route('wypozyczenia.store') }}">
         @csrf
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
                 <div class="mb-3">
-                    <label class="form-label" for="id_klienta">Klient</label>
+                    <label class="form-label" for="id_klienta">Klienta</label>
 
                     <select name="id_klienta" id="id_klienta" class="category">
                         <option disabled selected>--wybierz klienta--</option>
@@ -33,7 +24,7 @@
                     <select name="id_pojazdu" id="id_pojazdu" class="category">
                         <option disabled selected>--wybierz pojazd--</option>
                         @foreach($pojazd as $item)
-                            <option onclick="change()" id="opt" value="{{ $item->id }}">{{ $item->s_typ_pojazdu->name }} | {{ $item->nr_pojazdu }} | {{ $item->s_marka->name }} {{ $item->s_model->name }} {{ $item->wersja }} | PLN: {{ $item->cena }}</option>
+                            <option value="{{ $item->id }}">{{ $item->s_typ_pojazdu->name }} | {{ $item->nr_pojazdu }} | {{ $item->s_marka->name }} {{ $item->s_model->name }} {{ $item->wersja }}</option>
                         @endforeach
                     </select>
                     @error('id_pojazdu')
@@ -60,16 +51,6 @@
                     @error('data_zakonczenia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
-                    <script>
-                        var today = new Date();
-                        var dd = String(today.getDate()).padStart(2, '0');
-                        var mm = String(today.getMonth() + 1).padStart(2, '0');
-                        var yyyy = today.getFullYear();
-
-                        today = yyyy + '-' + mm + '-' + dd;
-                        $('#data_rozpoczecia').attr('min',today);
-                        $('#data_zakonczenia').attr('min',today);
-                    </script>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="dod_ubezpieczenie">Dodatkowe ubezpieczenie</label>
