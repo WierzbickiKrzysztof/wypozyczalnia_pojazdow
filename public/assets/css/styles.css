@@ -55,6 +55,9 @@ td, th {
 #id_klienta {
     width: 100%;
 }
+#id_pojazdu {
+    width: 100%;
+}
 .map-container{
     overflow:hidden;
     padding-bottom:20px;

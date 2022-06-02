@@ -1,5 +1,14 @@
 <x-layout>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <<script type="text/javascript">
+        function change(){
+            var select = document.getElementById("id_pojazdu");
+            var text = select.options[select.selectedIndex].text;
+            var cut = text.split("Cena: ").pop();
+            var price = parseInt(cut);
+            document.getElementById("kowta_wypozyczenia_dzien").value= price;
+        }
+    </script>
     <h1>Dodaj wypozyczenie</h1>
     <form method="POST" action="{{ route('wypozyczenia.store') }}">
         @csrf
@@ -24,7 +33,7 @@
                     <select name="id_pojazdu" id="id_pojazdu" class="category">
                         <option disabled selected>--wybierz pojazd--</option>
                         @foreach($pojazd as $item)
-                            <option value="{{ $item->id }}">{{ $item->s_typ_pojazdu->name }} | {{ $item->nr_pojazdu }} | {{ $item->s_marka->name }} {{ $item->s_model->name }} {{ $item->wersja }}</option>
+                            <option onclick="change()" value="{{ $item->id }}">{{ $item->s_typ_pojazdu->name }} | {{ $item->nr_pojazdu }} | {{ $item->s_marka->name }} {{ $item->s_model->name }} {{ $item->wersja }} | Cena: {{$item->s_typ_pojazdu->cena}}</option>
                         @endforeach
                     </select>
                     @error('id_pojazdu')
