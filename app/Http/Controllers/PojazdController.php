@@ -76,4 +76,9 @@ class PojazdController extends Controller
         $pojazd->delete();
         return redirect('/pojazdy')->with('message', 'Pojazd usunięty pomyślnie!');
     }
+
+    public function cennik(){
+        $s_typ_pojazdu= S_typ_pojazdu::all();
+        return view('cennik.index', ['s_typ_pojazdu' =>$s_typ_pojazdu]);
+    }
 }

@@ -147,10 +147,7 @@ Route::post('/opcje', [KlientController::class, 'store_opcje_edit']);
 
 
 //Cennik
-Route::get('/cennik', function () {
-    return view('cennik.index');
-})->name('cennik.index') ;
-
+Route::get('/cennik', [PojazdController::class, 'cennik'])->name('cennik.index');
 //Mapy (lokalizacja)
 Route::get('/localisation', function () {
     return view('localisation');

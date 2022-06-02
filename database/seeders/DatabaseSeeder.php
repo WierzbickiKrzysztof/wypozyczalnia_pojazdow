@@ -32,21 +32,56 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('S_typ_pojazdu')->insert([
-            'name'=>'Samochód osobowy',
+            'name'=>'Samochód miejski ',
             'typ_pojazdu' => 'Klasa A',
             'cena' => '513.73'
         ]);
 
         DB::table('S_typ_pojazdu')->insert([
-            'name'=>'Samochód osobowy',
+            'name'=>'Samochód mały',
             'typ_pojazdu' => 'Klasa B',
             'cena' => '367.73'
         ]);
 
         DB::table('S_typ_pojazdu')->insert([
-            'name'=>'Samochód osobowy',
+            'name'=>'Samochód kompaktowy',
             'typ_pojazdu' => 'Klasa C',
-            'cena' => '127.73'
+            'cena' => '234.73'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Samochód rodzinny',
+            'typ_pojazdu' => 'Klasa D',
+            'cena' => '543.73'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Samochód klasy wyższa-średnia',
+            'typ_pojazdu' => 'Klasa E',
+            'cena' => '213.73'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Samochód luksusowy',
+            'typ_pojazdu' => 'Klasa F',
+            'cena' => '1253.23'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Samochód sportowe',
+            'typ_pojazdu' => 'Klasa G',
+            'cena' => '234.23'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Kabriolet',
+            'typ_pojazdu' => 'Klasa H',
+            'cena' => '167.73'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Samochód terenowy',
+            'typ_pojazdu' => 'Klasa I',
+            'cena' => '197.73'
+        ]);
+        DB::table('S_typ_pojazdu')->insert([
+            'name'=>'Van',
+            'typ_pojazdu' => 'Klasa K',
+            'cena' => '420.73'
         ]);
 
         DB::table('S_typ_pojazdu')->insert([
