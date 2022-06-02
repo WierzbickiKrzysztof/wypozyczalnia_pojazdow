@@ -16,6 +16,9 @@
             <div class="col-12 col-sm-6 col-md-6">
                 <h1 class="text-white mb-4">Panel klienta</h1>
                 <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('users.history') }}">Historia wypożyczeń</a>
+                @foreach($users as $users)
+                <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('users.client_data_edit',['users' => $users->id]) }}">Edytuj Profil</a>
+                @endforeach
             </div>
         </div>
 

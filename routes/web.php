@@ -166,7 +166,9 @@ Route::post('api/get/{type}', [AjaxController::class, 'getAjax']);
 
 //Panel klienta
 Route::get('/users/panel_klienta', [UserController::class, 'index_panelu_klienta'])->name('panel_klienta')->middleware('auth', 'can:klient');
-
+Route::get('/users/client_data_edit/{users}', [UserController::class, 'index_panel_klienta_edytuj'])->name('users.client_data_edit')->middleware('auth', 'can:klient');
+Route::put('/users/panel_klienta/{users}', [UserController::class, 'index_panel_klienta_update'])->name('users.client_data_update');
+//Route::put('/users/{user}', [UserController::class, 'update'])->name('client_data_edit');
 //Przycisk historia_wypozyczen w panelu_klienta
 Route::get('/users/history', [UserController::class, 'show_history'])->name('users.history')->middleware('auth', 'can:klient');     // Tutaj potrzebna autoryzacja?
 

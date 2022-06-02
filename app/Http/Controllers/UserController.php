@@ -69,6 +69,7 @@ class UserController extends Controller
         return view('users.manage_edit', ['user' => $user]);
     }
     public function index(){
+
         return view('users.manage_show', [
 
             'users' => User::where('typ_konta' ,'pracownik')->get()
@@ -146,8 +147,34 @@ class UserController extends Controller
     }
 
     //wyswietlenie panelu klienta
-    public function index_panelu_klienta(){
-        return view('users.panel_klienta');
+    public function index_panelu_klienta(User $users){
+        return view('users.panel_klienta', [
+
+            'users' => User::where('id' ,Auth::id())->get()
+        ]);
+        //return view('users.panel_klienta'.$users->id, ['users'=>$users]);
+    }
+
+
+    //public function index_panel_klienta_edytuj(User $user) {
+   // }
+
+    public function index_panel_klienta_edytuj(User $users){
+        //return view('users.client_data_edit', ['users' => $user]);
+        return view('users.client_data_edit', ['users'=>$users]);
+    }
+
+    public function index_panel_klienta_update(Request $request, User $users) {
+        $formFields = $request->validate([
+
+            'name' => 'required',
+            'password' => 'required',
+            'email' => 'required'
+        ]);
+
+        $users->update($formFields);
+
+        return redirect('/users/panel_klienta/')->with('message', 'Zaktualizowane Dane!');
     }
 
     //metoda do wyswietlenia historii wypozyczen danego klienta
