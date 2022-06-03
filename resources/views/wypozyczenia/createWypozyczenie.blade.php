@@ -9,8 +9,7 @@
             document.getElementById("kowta_wypozyczenia_dzien").value= price;
         }
         function dateValidate(){
-            var start = new Date();
-            start = document.getElementById("data_rozpoczecia").value;
+            var start = document.getElementById("data_rozpoczecia").value;
             var end = document.getElementById("data_zakonczenia").value;
             if(start > end){
                 document.getElementById("data_zakonczenia").setCustomValidity("Data zkończenia musi być większa niż data rozpoczęcia.");
