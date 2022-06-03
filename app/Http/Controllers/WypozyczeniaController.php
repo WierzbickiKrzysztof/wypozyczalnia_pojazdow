@@ -20,7 +20,10 @@ class WypozyczeniaController extends Controller
     public function index(){
         $wypozyczenia = Wypozyczenie::all();
         $zwrot = Zwroty::all();
-         return view('wypozyczenia.index',  compact('zwrot', 'wypozyczenia'));
+        $sum = DB::table('wypozyczenia')->sum('kowta_wypozyczenia_dzien');     //dochod z wypozyczen
+        // zakladam, ze to bedzie zmienione i bedzie liczylo kwote za wszystkie dni, w ktore klient wynajmuje auto
+
+         return view('wypozyczenia.index',  compact('zwrot', 'wypozyczenia', 'sum'));
     }
 
     public function create() {

@@ -57,6 +57,9 @@
     </table>
 
 
+        <h3 style="padding-top: 30px">Suma wypożyczeń:</h3>
+        <p style="font-size: x-large">{{ $sum }}zł</p>
+
     {{--    <div class="mt-6 p-4">--}}
     {{--        {{ $pojazdy->links() }}--}}
     {{--    </div>--}}
