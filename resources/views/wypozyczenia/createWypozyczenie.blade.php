@@ -8,6 +8,18 @@
             var price = parseInt(cut);
             document.getElementById("kowta_wypozyczenia_dzien").value= price;
         }
+        function dateValidate(){
+            var start = new Date();
+            start = document.getElementById("data_rozpoczecia").value;
+            var end = document.getElementById("data_zakonczenia").value;
+            if(start > end){
+                document.getElementById("data_zakonczenia").setCustomValidity("Data zkończenia musi być większa niż data rozpoczęcia.");
+                document.getElementById("data_zakonczenia").reportValidity();
+                return false;
+            }
+            document.getElementById("data_zakonczenia").setCustomValidity("");
+            return true;
+        }
     </script>
     <h1>Dodaj wypozyczenie</h1>
     <form method="POST" action="{{ route('wypozyczenia.store') }}">
@@ -86,7 +98,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button class="btn btn-primary d-block w-100" type="submit">Prześlij</button>
+                    <button onclick="return dateValidate()" class="btn btn-primary d-block w-100" type="submit">Prześlij</button>
                 </div>
             </div>
         </div>
