@@ -20,9 +20,6 @@
             <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-5">
             <ul class="navbar-nav ms-auto">
-                @auth
-                <li class="nav-item"><a class="nav-link active" href="#">Hej, {{ auth()->user()->name }}</a></li>
-                @endauth
                 <li class="nav-item"><a class="nav-link" href="{{ route('pojazdy.index') }}">Pojazdy</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('cennik.index') }}">Cennik</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
@@ -30,17 +27,56 @@
             <ul class="navbar-nav ms-auto">
                 @auth
                     @can('pracownik')
-                        <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('pracownicy.index') }}">Panel Pracownika</a></li>
+                        <li class="nav-item">
+                            <div class="btn-group">
+                                <a class="btn btn-danger" href="{{ route('pracownicy.index') }}">Pracownik {{ auth()->user()->name }}</a>
+                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('pracownicy.index') }}">Pracownicy</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('klient.index') }}">Klienci</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('rezerwacja.index') }}">Rezerwacje</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('wypozyczenia.index') }}">Wypożyczenia</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pojazdy.index') }}">Pojazdy</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <form class="inline" method="POST" action="{{ route('user.logout') }}">
+                                        @csrf
+                                        <li>
+                                            <button type="submit" class="dropdown-item">
+                                                Wyloguj się
+                                            </button>
+                                        </li>
+                                    </form>
+                                </ul>
+                            </div>
+                        </li>
                     @endcan
                     @cannot('pracownik')
+
+                            <li class="nav-item">
+                                <div class="btn-group">
+                                    <a class="btn btn-info" href="{{ route('panel_klienta') }}">Hej, {{ auth()->user()->name }}</a>
+                                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('panel_klienta') }}">Moje rezerwacje</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <form class="inline" method="POST" action="{{ route('user.logout') }}">
+                                            @csrf
+                                            <li>
+                                                <button type="submit" class="dropdown-item">
+                                                    Wyloguj się
+                                                </button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+
                         <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="{{ route('panel_klienta') }}">Panel Klienta</a></li>
                     @endcannot
-                    <form class="inline" method="POST" action="{{ route('user.logout') }}">
-                        @csrf
-                        <li class="nav-item"><button type="submit" class="btn btn-success ms-md-2">
-                            Wyloguj się
-                        </button></li>
-                    </form>
+
                 @else
                     <li class="nav-item"><a class="btn btn-danger ms-md-2" role="button" href="{{ route('user.register') }}">Rejestracja</a></li>
                     <li class="nav-item"><a class="btn btn-info ms-md-2" role="button" href="{{ route('login') }}">Logowanie</a></li>
@@ -49,6 +85,7 @@
         </div>
     </div>
 </nav>
+@if(Route::currentRouteName() == 'index')
 <section>
     <div class="container-fluid" style="padding: 0;">
         <div class="border rounded border-0 d-flex flex-column justify-content-center align-items-center p-4 py-5" style="background: linear-gradient(rgba(0,123,255,0.2), rgba(0,123,255,0.2)), url({{ asset('/assets/img/Banner.png') }}) left / cover;height: 500px;">
@@ -65,6 +102,7 @@
         </div>
     </div>
 </section>
+@endif
 <section class="position-relative py-4 py-xl-5" id="main-s">
     <div class="container position-relative">
         <div class="row d-flex justify-content-center">
@@ -100,7 +138,7 @@
 <script src="{{ asset('/assets/js/bs-init.js') }}"></script>
 <script src="//unpkg.com/alpinejs" defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="{{ asset('js/main.js') }}" defer></script>
+@stack('scripts')
 <x-flash-message />
 
 </body>

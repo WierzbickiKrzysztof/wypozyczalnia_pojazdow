@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\PojazdController;
+use App\Http\Controllers\RezerwacjaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KlientController;
 use App\Http\Controllers\WypozyczeniaController;
@@ -170,6 +171,35 @@ Route::put('/users/panel_klienta/{users}', [UserController::class, 'index_panel_
 Route::get('/users/history', [UserController::class, 'show_history'])->name('users.history')->middleware('auth', 'can:klient');     // Tutaj potrzebna autoryzacja?
 
 
+
+// Rezerwacja //
+// SHOW: Wszystkie rezerwacje
+Route::get('/rezerwacja/show/all', [RezerwacjaController::class, 'index'])->name('rezerwacja.index')->middleware('auth', 'can:pracownik');
+
+// SHOW: Formularz dodawania rezerwacji - pracownik
+Route::get('/rezerwacja/create', [RezerwacjaController::class, 'create'])->name('rezerwacja.create')->middleware('auth', 'can:pracownik');
+
+
+// STORE: Zapisanie nowego wypożyczenia
+Route::post('/rezerwacja/store', [RezerwacjaController::class, 'store'])->name('rezerwacja.store');
+
+Route::get('wypozyczenia/generate', function (){
+    return view('wypozyczenia.generate');
+})->name('wypozyczenia.generate')->middleware('auth');
+
+Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
+Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth', 'can:pracownik');
+// UPDATE: Aktualizacja wypożyczenia
+Route::get('/wypozyczenia/{wypozyczenia}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update')->middleware('auth', 'can:pracownik');
+
+
+// DESTROY: Usunięcie wypożyczenia
+//Route::delete('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'destroy']); //->middleware('auth');
+
+// SHOW: Wyświetlenie wybranego wypożyczenia
+//Route::get('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'show']); //->middleware('auth');
+// SHOW: Formularz edytowania wypożyczenia
+//Route::get('/wypozyczenia/{wypozyczenie}/edit', [WypozyczeniaController::class, 'edit']); //->middleware('auth');
 
 
 

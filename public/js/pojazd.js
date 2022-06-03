@@ -21,6 +21,8 @@ jQuery(document).ready(function($){
 
                 $('#marka').empty();
 
+                $('#marka_h').show("slow");
+
                 var option = document.createElement('option');
                 option.text = '--wybierz markę pojazdu--';
                 option.disabled = true;
@@ -78,6 +80,8 @@ jQuery(document).ready(function($){
             success: function (data) {
 
                 $("#model").empty();
+
+                $('#model_h').show("slow");
 
                 var option = document.createElement('option');
                 option.text = '--wybierz model pojazdu--';
