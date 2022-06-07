@@ -32,6 +32,7 @@
 
             <td>
                 <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
+                <a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a>
             </td>
         </tr>
     @endforeach
