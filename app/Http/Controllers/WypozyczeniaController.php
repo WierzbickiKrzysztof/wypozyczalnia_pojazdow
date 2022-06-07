@@ -75,4 +75,13 @@ class WypozyczeniaController extends Controller
         $wypozyczenia = Wypozyczenie::whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->get();
         return view('wypozyczenia.indexlate',['wypozyczenia'=>$wypozyczenia]);
     }
+    public function klientReportGenrate() {
+
+        $klient = Klient::all();
+        return view('wypozyczenia.generate_klient_report', [ 'klient' => $klient]);
+    }
+    public function klientreport(Request $request) {
+        $wypozyczenia= Wypozyczenie::where('id_klienta', '=', $request->id_klienta )->get();
+        return view('wypozyczenia.klient_report',['wypozyczenia' =>$wypozyczenia]);
+    }
 }

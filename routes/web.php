@@ -111,6 +111,11 @@ Route::get('wypozyczenia/generate', function (){
     return view('wypozyczenia.generate');
 })->name('wypozyczenia.generate')->middleware('auth');
 
+//Wybieranie wyświetlania raportu dla poszczególnych klientów
+Route::get('/wypozyczenia/generate_klient_report', [WypozyczeniaController::class, 'klientReportGenrate'])->name('wypozyczenia.klientReportGenrate')->middleware('auth', 'can:pracownik');
+//Wyświetlanie raportu dla klienta
+Route::get('wypozyczenia/klient_report/', [WypozyczeniaController::class, 'klientreport']) ->name('wypozyczenia.klientreport');
+
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
 Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth', 'can:pracownik');
 // UPDATE: Aktualizacja wypożyczenia

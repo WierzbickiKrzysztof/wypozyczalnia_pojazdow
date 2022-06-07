@@ -19,6 +19,7 @@
                 <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.index') }}">Lista wypożyczeń</a>
                 <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('pojazdy.create') }}">Dodaj pojazd</a>
                 <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('opcje.index') }}">Dodatkowe Opcje Pojazdu</a>
+                <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.klientReportGenrate') }}">Raport poszczególnego klienta</a>
             </div>
         </div>
         <div id="TableSorterCard" class="card" style="border-style: none;border-radius: 6.5px;">
