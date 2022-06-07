@@ -97,6 +97,9 @@ Route::delete('/pojazdy/{pojazd}', [PojazdController::class, 'destroy'])->name('
 // SHOW: Wyświetlenie wybranego pojazdu
 Route::get('/pojazdy/{pojazd}', [PojazdController::class, 'show'])->name('pojazdy.show'); //->middleware('auth');
 
+// SHOW: Wyświetlenie historii wypożyczeń konkretnego pojazdu
+Route::get('/pojazdy/history/{id}', [PojazdController::class, 'show_wypozyczenia_pojazdu'])->name('pojazd.history');
+
 
 // Wypożyczenia //
 // SHOW: Wszystkie wypożyczenia

@@ -9,7 +9,8 @@
             <th scope="col">Pojazd</th>
             <th scope="col">Stan</th>
             @can('pracownik')
-                <th scope="col">Opcja</th>
+{{--                <th scope="col">Historia</th>--}}
+                <th scope="col">Opcje</th>
             @endcan
         </tr>
 
@@ -21,7 +22,10 @@
                 <td>{{ $pojazd->s_marka->name }} {{ $pojazd->s_model->name }} {{ $pojazd->wersja }}</td>
                 <td>{{ $pojazd->stan }}</td>
                 @can('pracownik')
-                    <td style="text-align: center"><a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a></td>
+                    <td style="text-align: center">
+                        <a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a>
+                        <a class="btn btn-success text-center " role="button" href="{{ url('pojazdy/history/' . $pojazd->id) }}">Historia pojazdu</a>
+                    </td>
                 @endcan
             </tr>
 
