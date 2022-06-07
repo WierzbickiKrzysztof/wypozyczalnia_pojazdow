@@ -82,4 +82,27 @@ class RezerwacjaController extends Controller
         $wypozyczenia = Wypozyczenie::whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->get();
         return view('wypozyczenia.indexlate',['wypozyczenia'=>$wypozyczenia]);
     }
+
+    public function edit(Rezerwacja $rezerwacja) {
+        $pojazd = Pojazd::all();
+        $klient = Klient::all();
+        $typ_pojazdu = S_typ_pojazdu::all();
+        return view('rezerwacja.edit', ['rezerwacja' => $rezerwacja, 'pojazd' => $pojazd, 'klient' => $klient, 'typ_pojazdu' => $typ_pojazdu]);
+    }
+
+    public function update_edit(Request $request, Rezerwacja $rezerwacja) {
+        $formFields = $request->validate([
+
+            'id_klienta' => 'required',
+            'id_pojazdu' => 'required',
+            'kwota_wypozyczenia_dzien' => 'required',
+            'data_rozpoczecia' => 'required',
+            'data_zakonczenia' => 'required',
+            'calkowita_kwota' => 'required'
+        ]);
+
+        $rezerwacja->update($formFields);
+
+        return redirect()->route('rezerwacja.index')->with('message', 'Rezerwacja edytowana pomyślnie!');
+    }
 }

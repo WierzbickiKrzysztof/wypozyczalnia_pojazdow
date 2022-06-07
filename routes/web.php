@@ -183,6 +183,12 @@ Route::get('/rezerwacja/create', [RezerwacjaController::class, 'create'])->name(
 // STORE: Zapisanie nowego wypożyczenia
 Route::post('/rezerwacja/store', [RezerwacjaController::class, 'store'])->name('rezerwacja.store');
 
+//EDIT: Formularz edytowania rezerwacji
+Route::get('/rezerwacja/edit/{rezerwacja}', [RezerwacjaController::class, 'edit'])->name('rezerwacja.edit');
+
+//UPDATE: Zapisanie zmian w rezerwacji
+Route::post('/rezerwacja/{rezerwacja}', [RezerwacjaController::class, 'update_edit'])->name('rezerwacja.update_edit');
+
 Route::get('wypozyczenia/generate', function (){
     return view('wypozyczenia.generate');
 })->name('wypozyczenia.generate')->middleware('auth');
