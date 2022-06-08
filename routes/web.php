@@ -102,8 +102,12 @@ Route::get('/pojazdy/history/{id}', [PojazdController::class, 'show_wypozyczenia
 
 
 // Wypożyczenia //
-// SHOW: Wszystkie wypożyczenia
+// SHOW: aktualne wypożyczenia
 Route::get('/wypozyczenia', [WypozyczeniaController::class, 'index'])->name('wypozyczenia.index')->middleware('auth', 'can:pracownik');
+// SHOW: Wszystkie wypożyczenia
+Route::get('/wypozyczenia/indexAll', [WypozyczeniaController::class, 'indexAll'])->name('wypozyczenia.indexAll')->middleware('auth', 'can:pracownik');
+// SHOW: zwrócone wypożyczenia
+Route::get('/wypozyczenia/indexZwrocone', [WypozyczeniaController::class, 'indexZwrocone'])->name('wypozyczenia.indexZwrocone')->middleware('auth', 'can:pracownik');
 
 // SHOW: Formularz dodawania wypożyczenia
 Route::get('/wypozyczenia/create', [WypozyczeniaController::class, 'create'])->name('wypozyczenia.create')->middleware('auth', 'can:pracownik');

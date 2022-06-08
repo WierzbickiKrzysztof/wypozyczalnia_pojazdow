@@ -7,7 +7,10 @@
 
     </div>
 
-    <h2 class="text-center mb-4">Lista wypożyczeń</h2>
+    <h2 class="text-center mb-4">Lista wypożyczeń - <?php echo $nazwa ?></h2>
+    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.index') }}">Aktualne wypożyczenia</a>
+    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.indexAll') }}">Wszystkie wypożyczenia</a>
+    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.indexZwrocone') }}">Zwrócone wypożyczenia</a>
     <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.latereturn') }}">Pojazdy niezwrócone w terminie</a>
 
     <table>
