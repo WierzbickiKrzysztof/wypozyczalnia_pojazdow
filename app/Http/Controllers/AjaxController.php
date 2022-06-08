@@ -33,7 +33,11 @@ class AjaxController extends Controller
             $id_marka = $request->marka;
             $id_model = $request->model;
 
-            $rezerwacje = Rezerwacja::all();
+            $data_rozpoczecia = $request->data_rozpoczecia;
+            $data_zakonczenia = $request->data_zakonczenia;
+
+            $rezerwacje = Rezerwacja::whereBetween('data_zakonczenia', [$data_rozpoczecia, $data_zakonczenia])->get();
+
             $zarezerwowane = [];
             foreach($rezerwacje as $rz){
                 $zarezerwowane[] = $rz['id_pojazdu'];
