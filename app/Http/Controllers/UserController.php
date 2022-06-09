@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Wypozyczenie;
+use App\Models\Rezerwacja;
 use App\Models\Zwroty;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -184,5 +185,12 @@ class UserController extends Controller
             'wypozyczenia' => Wypozyczenie::where('id_klienta' ,Auth::id())->get()
         ]);
     }
+    public function show_reservataion_history(){
+        return view('users.panel_klienta_reservation_history', [
+
+            'rezerwacja' => Rezerwacja::where('id_klienta' ,Auth::id())->get()
+        ]);
+    }
+
 
 }

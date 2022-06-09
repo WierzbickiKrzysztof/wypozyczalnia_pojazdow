@@ -186,20 +186,21 @@ Route::put('/users/panel_klienta/{users}', [UserController::class, 'index_panel_
 //Route::put('/users/{user}', [UserController::class, 'update'])->name('client_data_edit');
 //Przycisk historia_wypozyczen w panelu_klienta
 Route::get('/users/history', [UserController::class, 'show_history'])->name('users.history')->middleware('auth', 'can:klient');     // Tutaj potrzebna autoryzacja?
+//Wyświetlenie rezerwacji klienta
 
-
+Route::get('/users/panel_klienta_resrvation_history', [UserController::class, 'show_reservataion_history'])->name('users.panel-klienta-resrvation-history')->middleware('auth', 'can:klient');
 
 // Rezerwacja //
 // SHOW: Wszystkie rezerwacje
 Route::get('/rezerwacja/show/all', [RezerwacjaController::class, 'index'])->name('rezerwacja.index')->middleware('auth', 'can:pracownik');
 
 // SHOW: Formularz dodawania rezerwacji - pracownik
-Route::get('/rezerwacja/create', [RezerwacjaController::class, 'create'])->name('rezerwacja.create')->middleware('auth', 'can:pracownik');
-
+Route::get('/rezerwacja/create', [RezerwacjaController::class, 'create'])->name('rezerwacja.create')->middleware('auth', 'can:pracownik,');
+Route::get('/rezerwacja/create_client', [RezerwacjaController::class, 'create_client'])->name('rezerwacja.create_client')->middleware('auth', 'can:klient,');
 
 // STORE: Zapisanie nowego wypożyczenia
 Route::post('/rezerwacja/store', [RezerwacjaController::class, 'store'])->name('rezerwacja.store');
-
+Route::post('/rezerwacja/store_client', [RezerwacjaController::class, 'store_client'])->name('rezerwacja.store_client');
 //EDIT: Formularz edytowania rezerwacji
 Route::get('/rezerwacja/edit/{rezerwacja}', [RezerwacjaController::class, 'edit'])->name('rezerwacja.edit');
 

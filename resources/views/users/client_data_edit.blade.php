@@ -47,12 +47,7 @@
                                 <p class="text-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
-                                <div class="text-dark mb-4"><label class="form-label" for="city"><strong>Miasto</strong></label><input id="cityId" class="form-control" type="text" placeholder="Miejscowość oraz kod pocztowy" name="city"  /></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-dark mb-4"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" placeholder="ulica" name="address" /></div>
-                            </div>
+
                             <div class="col">
                                 <p id="emailErrorMsg" class="text-danger" style="display: none;"></p>
                                 <p id="passwordErrorMsg" class="text-danger" style="display: none;"></p>

@@ -19,6 +19,7 @@
                 @foreach($users as $users)
                 <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('users.client_data_edit',['users' => $users->id]) }}">Edytuj Profil</a>
                 @endforeach
+                <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('users.panel-klienta-resrvation-history') }}">Rezerwacje</a>
             </div>
         </div>
 

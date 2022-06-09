@@ -47,6 +47,7 @@ class KlientController extends Controller
     public function edit(User $user) {
         return view('klient.client_edit', ['user' => $user]);
     }
+
     public function index(){
         return view('klient.client_show', [
 

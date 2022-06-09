@@ -6,8 +6,10 @@ use App\Models\Klient;
 use App\Models\Pojazd;
 use App\Models\Rezerwacja;
 use App\Models\S_typ_pojazdu;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class RezerwacjaController extends Controller
@@ -55,9 +57,46 @@ class RezerwacjaController extends Controller
         return redirect()->route('rezerwacja.index')->with('message', 'Utworzono rezerwacje!');
     }
 
+    public function create_client() {
+        $pojazd = Pojazd::all();
+        $klient = Klient::all();
+        $typ_pojazdu = S_typ_pojazdu::all();
+        return view('rezerwacja.create_client', ['pojazd' => $pojazd, 'klient' => $klient, 'typ_pojazdu' => $typ_pojazdu]);
+    }
+    public function store_client(Request $request) {
+
+        $id_typ_pojazdu = Pojazd::where('id', $request->id_pojazdu)->get('typ_pojazdu');
+
+        $data_rozpoczecia = new DateTime($request->data_rozpoczecia);
+        $data_zakonczenia = new DateTime($request->data_zakonczenia);
+
+        $l_dni = $data_zakonczenia->diff($data_rozpoczecia)->format("%a"); //3
+
+        $cena = S_typ_pojazdu::where('id', $id_typ_pojazdu[0]['typ_pojazdu'])->get('cena')[0]['cena'];
+
+        $cena_koncowa = ($l_dni*$cena);
+
+//        $formFields = $request->validate([
+//            'id_klienta' => 'required',
+//            'id_pojazdu' => 'required',
+//            'kwota_wypozyczenia_dzien' => 'required',
+//            'data_rozpoczecia' => ['required', 'date'],
+//            'data_zakonczenia' => ['required', 'date'],
+//            //'dod_ubezpieczenie' => ['required', 'boolean'],
+//            //'skan_umowy' => 'required',
+//            //'cena_koncowa' => 'required',
+//        ]);
+
+
+        Rezerwacja::create(['id_klienta' => Auth::id(), 'id_pojazdu' => $request->id_pojazdu, 'kwota_wypozyczenia_dzien' => $cena, 'data_rozpoczecia' => $request->data_rozpoczecia, 'data_zakonczenia' => $request->data_zakonczenia, 'calkowita_kwota' => $cena_koncowa]);
+
+        return redirect()->route('users.panel-klienta-resrvation-history')->with('message', 'Utworzono rezerwacje!');
+    }
+
 
     public function destroy(Rezerwacja $rezerwacja) {
         $rezerwacja->delete();
+        //return redirect()->
         return redirect('/rezerwacja/show/all')->with('message', 'Usunięto Wpis!');
     }
     public function showReport(Request $request) {
