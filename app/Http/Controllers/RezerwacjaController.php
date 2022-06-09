@@ -56,6 +56,10 @@ class RezerwacjaController extends Controller
     }
 
 
+    public function destroy(Rezerwacja $rezerwacja) {
+        $rezerwacja->delete();
+        return redirect('/rezerwacja/show/all')->with('message', 'Usunięto Wpis!');
+    }
     public function showReport(Request $request) {
         $data_p = $request->data_rozpoczecia;
         $data_k = $request->data_zakonczenia;

@@ -34,7 +34,13 @@
                 <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(0,144,197);"><i class="fas fa-pen"></i></a>
 
                 <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('wypozyczenia.create') }}" style="color: rgb(0,197,3);"><i class="fas fa-cart-plus"></i></a>
-                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(217,23,23);"><i class="fas fa-trash"></i></a>
+                <form method="POST" class="d-inline" action="{{ route('rezerwacja.destroy', ['rezerwacja' => $rezerwacja->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btnMaterial btn-flat accent btnNoBorders checkboxHover" type="submit" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="fas fa-trash btnNoBorders" style="color: rgb(217,23,23);"></i></button>
+
+                </form>
+
             </td>
 
         </tr>

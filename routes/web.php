@@ -200,6 +200,7 @@ Route::get('/rezerwacja/edit/{rezerwacja}', [RezerwacjaController::class, 'edit'
 
 //UPDATE: Zapisanie zmian w rezerwacji
 Route::post('/rezerwacja/{rezerwacja}', [RezerwacjaController::class, 'update_edit'])->name('rezerwacja.update_edit');
+Route::delete('/rezerwacja/delete/{rezerwacja}', [RezerwacjaController::class, 'destroy'])->name('rezerwacja.destroy')->middleware('auth', 'can:pracownik');
 
 Route::get('wypozyczenia/generate', function (){
     return view('wypozyczenia.generate');
