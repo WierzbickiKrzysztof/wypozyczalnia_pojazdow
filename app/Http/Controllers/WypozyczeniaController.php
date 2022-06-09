@@ -21,7 +21,7 @@ class WypozyczeniaController extends Controller
         $nazwa = 'aktualne';
         $wypozyczenia = Wypozyczenie::all()->whereNull('data_zwrotu');
         $zwrot = Zwroty::all();
-        $sum = DB::table('wypozyczenia')->sum('kowta_wypozyczenia_dzien');     //dochod z wypozyczen
+        $sum = DB::table('wypozyczenia')->whereNull('data_zwrotu')->sum('kowta_wypozyczenia_dzien');     //dochod z wypozyczen
         // zakladam, ze to bedzie zmienione i bedzie liczylo kwote za wszystkie dni, w ktore klient wynajmuje auto
 
          return view('wypozyczenia.index',  compact('zwrot', 'nazwa', 'wypozyczenia', 'sum'));
@@ -41,7 +41,7 @@ class WypozyczeniaController extends Controller
         $nazwa = 'zwrócone';
         $wypozyczenia = Wypozyczenie::all()->whereNotNull('data_zwrotu');
         $zwrot = Zwroty::all();
-        $sum = DB::table('wypozyczenia')->sum('kowta_wypozyczenia_dzien');     //dochod z wypozyczen
+        $sum = DB::table('wypozyczenia')->whereNotNull('data_zwrotu')->sum('kowta_wypozyczenia_dzien');     //dochod z wypozyczen
         // zakladam, ze to bedzie zmienione i bedzie liczylo kwote za wszystkie dni, w ktore klient wynajmuje auto
 
         return view('wypozyczenia.index',  compact('zwrot', 'nazwa', 'wypozyczenia', 'sum'));
