@@ -33,7 +33,7 @@
             <td>
                 <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(0,144,197);"><i class="fas fa-pen"></i></a>
 
-                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('wypozyczenia.create') }}" style="color: rgb(0,197,3);"><i class="fas fa-cart-plus"></i></a>
+                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('wypozyczenia.createFromRezerwacja', ['id_klienta' => $rezerwacja->id_klienta, 'id_pojazdu' => $rezerwacja->id_pojazdu, 'kwota_wypozyczenia_dzien' => $rezerwacja->kwota_wypozyczenia_dzien, 'data_rozpoczecia' => $rezerwacja->data_rozpoczecia, 'data_zakonczenia' => $rezerwacja->data_zakonczenia]) }}" style="color: rgb(0,197,3);"><i class="fas fa-cart-plus"></i></a>
                 <form method="POST" class="d-inline" action="{{ route('rezerwacja.destroy', ['rezerwacja' => $rezerwacja->id]) }}">
                     @csrf
                     @method('DELETE')
