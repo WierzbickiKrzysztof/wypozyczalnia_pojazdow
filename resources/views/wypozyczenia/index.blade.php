@@ -47,7 +47,7 @@
             <td> {{ $Wypozyczenie->dod_ubezpieczenie }}</td>
             <td> {{ $Wypozyczenie->skan_umowy }}</td>
             <td>
-                <form method="get" action="{{ route('wypozyczenia.update', ['wypozyczenia' => $Wypozyczenie->id])  }}">
+                <form method="get" action="{{ url('zwroty/update/' . $Wypozyczenie->id)  }}">
                     @csrf
                     @method('get')
                     <button class="btn btnMaterial btn-flat accent btnNoBorders checkboxHover" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="far fa-eye" style="color: #00bdff;"></i></button>

@@ -131,8 +131,8 @@ Route::get('wypozyczenia/klient_report/', [WypozyczeniaController::class, 'klien
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
 Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth', 'can:pracownik');
 // UPDATE: Aktualizacja wypożyczenia
-Route::get('/wypozyczenia/{wypozyczenia}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update')->middleware('auth', 'can:pracownik');
-
+Route::get('zwroty/update/{id}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update')->middleware('auth', 'can:pracownik');
+Route::put('zwroty',[WypozyczeniaController::class, 'updatePrzebiegu'])->name('zwroty');
 
 // DESTROY: Usunięcie wypożyczenia
 //Route::delete('/wypozyczenia/{wypozyczenie}', [WypozyczeniaController::class, 'destroy']); //->middleware('auth');

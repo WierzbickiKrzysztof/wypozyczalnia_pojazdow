@@ -90,16 +90,39 @@ class WypozyczeniaController extends Controller
 
         return view('wypozyczenia.report', ['wypozyczenia' => $data])->with(['data_p'=>$data_p, 'data_k'=>$data_k]);
     }
-    public function update(Request $request, Wypozyczenie $wypozyczenia)
-    {
+
+    public function updatePrzebiegu(Request $request){
+
+        $przebieg = $request->input('przebieg');
+        $indexPojazdu = $request->input('indexPojazdu');
+        $indexWypozyczenia = $request->input('indexWypozyczenia');
+        $uszkodzenia = $request->input('uszkodzenia');
         $date=date("Y-m-d");
-        $index=$wypozyczenia->id;
-        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$index'");
+
+        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$indexWypozyczenia'");
+        $bool1 = DB::update("UPDATE pojazdy SET przebieg ='$przebieg' WHERE id='$indexPojazdu'");
+//        $bool3 = DB::update("INSERT INTO uszkodzenia('id_wypozyczenia', 'id_pojazdu', 'name') VALUES ($indexWypozyczenia, $indexPojazdu, '$uszkodzenia')");
+        DB::insert('insert into uszkodzenia (id_wypozyczenia, id_pojazdu, name) values (?, ?, ?)', [$indexWypozyczenia, $indexPojazdu, "$uszkodzenia"]);
 
 
+        return redirect('/wypozyczenia')->with('message', 'Pojazd zwrocony pomyslnie!');
+    }
+
+    public function update($id)
+    {
+       $indexPojazdu = DB::table('wypozyczenia')->where('id', $id)->first()->id_pojazdu;
+       $przebieg = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->przebieg;
 
 
-        return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
+        return view('zwroty.formularzZwrotu', compact('id', 'indexPojazdu', 'przebieg'));
+//        $date=date("Y-m-d");
+//        $index=$id;
+//        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$index'");
+//
+//
+//
+//
+//        return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
     }
     public function latereturn(){
         $date=date("Y-m-d");
