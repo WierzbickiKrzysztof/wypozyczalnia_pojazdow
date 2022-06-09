@@ -31,9 +31,12 @@
 {{--            <td> {{ $rezerwacja->id_ubezpieczenia }}</td>--}}
 
             <td>
-                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(0,197,179);"><i class="fas fa-pen"></i></a>
-                <a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a>
+                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(0,144,197);"><i class="fas fa-pen"></i></a>
+
+                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('wypozyczenia.create') }}" style="color: rgb(0,197,3);"><i class="fas fa-cart-plus"></i></a>
+                <a class="btn btnMaterial btn-flat success semicircle" role="button" href="{{ route('rezerwacja.edit', ['rezerwacja' => $rezerwacja->id]) }}" style="color: rgb(217,23,23);"><i class="fas fa-trash"></i></a>
             </td>
+
         </tr>
     @endforeach
     </table>
