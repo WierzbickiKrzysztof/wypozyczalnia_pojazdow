@@ -23,7 +23,7 @@
                 <td>{{ $pojazd->stan }}</td>
                 @can('pracownik')
                     <td style="text-align: center">
-                        <a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.create') }}">Wypożycz</a>
+                        <a class="btn btn-primary text-center " role="button" href="{{ route('wypozyczenia.createFromPojazdy', ['id_pojazdu' => $pojazd->id, 'kwota_wypozyczenia_dzien' => $pojazd->s_typ_pojazdu->cena]) }}">Wypożycz</a>
                         <a class="btn btn-success text-center " role="button" href="{{ url('pojazdy/history/' . $pojazd->id) }}">Historia pojazdu</a>
                     </td>
                 @endcan

@@ -55,7 +55,12 @@ class WypozyczeniaController extends Controller
     public function createFromRezerwacja($id_klienta, $id_pojazdu, $kwota_wypozyczenia_dzien, $data_rozpoczecia, $data_zakonczenia) {
         $pojazd = Pojazd::all();
         $klient = Klient::all();
-        return view('wypozyczenia.create', ['id_klienta' => $id_klienta, 'id_pojazdu' => $id_pojazdu, 'kwota_wypozyczenia_dzien' => $kwota_wypozyczenia_dzien, 'data_rozpoczecia' => $data_rozpoczecia, 'data_zakonczenia' => $data_zakonczenia, 'pojazd' => $pojazd, 'klient' => $klient]);
+        return view('wypozyczenia.createFromRezerwacje', ['id_klienta' => $id_klienta, 'id_pojazdu' => $id_pojazdu, 'kwota_wypozyczenia_dzien' => $kwota_wypozyczenia_dzien, 'data_rozpoczecia' => $data_rozpoczecia, 'data_zakonczenia' => $data_zakonczenia, 'pojazd' => $pojazd, 'klient' => $klient]);
+    }
+    public function createFromPojazdy($id_pojazdu, $kwota_wypozyczenia_dzien) {
+        $pojazd = Pojazd::all();
+        $klient = Klient::all();
+        return view('wypozyczenia.createFromPojazdy', ['id_pojazdu' => $id_pojazdu, 'kwota_wypozyczenia_dzien' => $kwota_wypozyczenia_dzien, 'pojazd' => $pojazd, 'klient' => $klient]);
     }
 
     public function store(Request $request) {

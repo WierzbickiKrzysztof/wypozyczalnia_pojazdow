@@ -113,6 +113,8 @@ Route::get('/wypozyczenia/indexZwrocone', [WypozyczeniaController::class, 'index
 Route::get('/wypozyczenia/create', [WypozyczeniaController::class, 'create'])->name('wypozyczenia.create')->middleware('auth', 'can:pracownik');
 // SHOW: Formularz dodawania wypożyczenia z rezerwacji
 Route::get('/wypozyczenia/createFromRezerwacja/{id_klienta},{id_pojazdu},{kwota_wypozyczenia_dzien},{data_rozpoczecia},{data_zakonczenia}', [WypozyczeniaController::class, 'createFromRezerwacja'])->name('wypozyczenia.createFromRezerwacja')->middleware('auth', 'can:pracownik');
+// SHOW: Formularz dodawania wypożyczenia z pojazdu
+Route::get('/wypozyczenia/createFromPojazdy/{id_pojazdu},{kwota_wypozyczenia_dzien}', [WypozyczeniaController::class, 'createFromPojazdy'])->name('wypozyczenia.createFromPojazdy')->middleware('auth', 'can:pracownik');
 
 // STORE: Zapisanie nowego wypożyczenia
 Route::post('/wypozyczenia', [WypozyczeniaController::class, 'store'])->name('wypozyczenia.store');

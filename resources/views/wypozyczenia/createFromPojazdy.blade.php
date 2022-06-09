@@ -19,14 +19,14 @@
             document.getElementById("data_zakonczenia").setCustomValidity("");
             return true;
         }
-        function changeSelect(){
-            var klient = document.getElementById("ukryty").value;
-            document.getElementById("id_klienta").value = klient;
+        function changeValue(){
             var pojazd = document.getElementById("ukryty2").value;
             document.getElementById("id_pojazdu").value = pojazd;
+            var cena = document.getElementById("ukryty3").value;
+            document.getElementById("kowta_wypozyczenia_dzien").value = cena;
         }
 
-        window.onload = changeSelect;
+        window.onload = changeValue;
     </script>
     <h1>Dodaj wypozyczenie</h1>
     <form method="POST" action="{{ route('wypozyczenia.store') }}">
@@ -34,7 +34,6 @@
         <div class="col-md-4 mx-auto card bg-secondary border-info mb-5">
             <div class="card-body p-sm-5">
                 <div class="mb-3">
-                    <input type="hidden" id="ukryty" value="{{ $id_klienta }}">
                     <label class="form-label" for="id_klienta">Klient</label>
 
                     <select name="id_klienta" id="id_klienta" class="category">
@@ -62,22 +61,23 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <input type="hidden" id="ukryty3" value="{{ $kwota_wypozyczenia_dzien }}">
                     <label class="form-label" for="kowta_wypozyczenia_dzien">Kwota wypożyczenia(dzień)</label>
-                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="kowta_wypozyczenia_dzien" name="kowta_wypozyczenia_dzien" required="" value="{{ $kwota_wypozyczenia_dzien }}">
+                    <input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="kowta_wypozyczenia_dzien" name="kowta_wypozyczenia_dzien" required="" value="{{old('kowta_wypozyczenia_dzien')}}">
                     @error('kowta_wypozyczenia_dzien')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="data_rozpoczecia">Data rozpoczęcia</label>
-                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_rozpoczecia" name="data_rozpoczecia" required="" value="{{ $data_rozpoczecia }}">
+                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_rozpoczecia" name="data_rozpoczecia" required="" value="{{old('data_rozpoczecia')}}">
                     @error('data_rozpoczecia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="data_zakonczenia">Data zakończenia</label>
-                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_zakonczenia" name="data_zakonczenia" required="" value="{{ $data_zakonczenia }}">
+                    <input class="form-control" type="date" data-bs-toggle="tooltip" data-bss-tooltip="" id="data_zakonczenia" name="data_zakonczenia" required="" value="{{old('data_zakonczenia')}}">
                     @error('data_zakonczenia')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
