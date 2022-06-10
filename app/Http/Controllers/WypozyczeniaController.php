@@ -46,6 +46,14 @@ class WypozyczeniaController extends Controller
 
         return view('wypozyczenia.index',  compact('zwrot', 'nazwa', 'wypozyczenia', 'sum'));
     }
+    public function indexLate(){
+        $nazwa = 'niezwrócone w terminie';
+        $date=date("Y-m-d");
+        $wypozyczenia = Wypozyczenie::whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->get();
+        $zwrot = Zwroty::all();
+        $sum = DB::table('wypozyczenia')->whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->sum('kowta_wypozyczenia_dzien');
+        return view('wypozyczenia.index', compact('zwrot', 'nazwa', 'wypozyczenia', 'sum'));
+    }
 
     public function create() {
         $pojazd = Pojazd::all();
@@ -124,11 +132,7 @@ class WypozyczeniaController extends Controller
 //
 //        return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
     }
-    public function latereturn(){
-        $date=date("Y-m-d");
-        $wypozyczenia = Wypozyczenie::whereColumn('data_zwrotu' ,'>','data_zakonczenia')->where('data_zakonczenia','<',$date)->get();
-        return view('wypozyczenia.indexlate',['wypozyczenia'=>$wypozyczenia]);
-    }
+
     public function klientReportGenrate() {
 
         $klient = Klient::all();

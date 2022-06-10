@@ -11,7 +11,7 @@
     <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.index') }}">Aktualne wypożyczenia</a>
     <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.indexAll') }}">Wszystkie wypożyczenia</a>
     <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.indexZwrocone') }}">Zwrócone wypożyczenia</a>
-    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.latereturn') }}">Pojazdy niezwrócone w terminie</a>
+    <a class="btn btn-primary fs-5 me-2 py-2 px-4" role="button" href="{{ route('wypozyczenia.indexLate') }}">Pojazdy niezwrócone w terminie</a>
 
     <table>
         <tr>

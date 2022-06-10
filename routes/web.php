@@ -108,6 +108,8 @@ Route::get('/wypozyczenia', [WypozyczeniaController::class, 'index'])->name('wyp
 Route::get('/wypozyczenia/indexAll', [WypozyczeniaController::class, 'indexAll'])->name('wypozyczenia.indexAll')->middleware('auth', 'can:pracownik');
 // SHOW: zwrócone wypożyczenia
 Route::get('/wypozyczenia/indexZwrocone', [WypozyczeniaController::class, 'indexZwrocone'])->name('wypozyczenia.indexZwrocone')->middleware('auth', 'can:pracownik');
+// SHOW: Wypożyczenie nie zwrócone w terminie
+Route::get('/wypozyczenia/indexLate', [WypozyczeniaController::class, 'indexLate'])->name('wypozyczenia.indexLate')->middleware('auth', 'can:pracownik');
 
 // SHOW: Formularz dodawania wypożyczenia
 Route::get('/wypozyczenia/create', [WypozyczeniaController::class, 'create'])->name('wypozyczenia.create')->middleware('auth', 'can:pracownik');
@@ -129,7 +131,6 @@ Route::get('/wypozyczenia/generate_klient_report', [WypozyczeniaController::clas
 Route::get('wypozyczenia/klient_report/', [WypozyczeniaController::class, 'klientreport']) ->name('wypozyczenia.klientreport');
 
 Route::post('wypozyczenia/report', [WypozyczeniaController::class, 'showReport']) ->name('wypozyczenia.report');
-Route::get('/latereturn', [WypozyczeniaController::class, 'latereturn'])->name('wypozyczenia.latereturn')->middleware('auth', 'can:pracownik');
 // UPDATE: Aktualizacja wypożyczenia
 Route::get('zwroty/update/{id}', [WypozyczeniaController::class, 'update'])->name('wypozyczenia.update')->middleware('auth', 'can:pracownik');
 Route::put('zwroty',[WypozyczeniaController::class, 'updatePrzebiegu'])->name('zwroty');
