@@ -107,11 +107,10 @@ class WypozyczeniaController extends Controller
         $uszkodzenia = $request->input('uszkodzenia');
         $date=date("Y-m-d");
 
-        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$indexWypozyczenia'");
-        $bool1 = DB::update("UPDATE pojazdy SET przebieg ='$przebieg' WHERE id='$indexPojazdu'");
-//        $bool3 = DB::update("INSERT INTO uszkodzenia('id_wypozyczenia', 'id_pojazdu', 'name') VALUES ($indexWypozyczenia, $indexPojazdu, '$uszkodzenia')");
-        DB::insert('insert into uszkodzenia (id_wypozyczenia, id_pojazdu, name) values (?, ?, ?)', [$indexWypozyczenia, $indexPojazdu, "$uszkodzenia"]);
-
+        DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$indexWypozyczenia'");           //ustawia, ze pojazd jest "zwrocony"
+        DB::update("UPDATE pojazdy SET przebieg ='$przebieg' WHERE id='$indexPojazdu'");                                    // update przebiegu pojazdu
+        DB::insert('insert into uszkodzenia (id_wypozyczenia, id_pojazdu, name) values (?, ?, ?)', [$indexWypozyczenia, $indexPojazdu, "$uszkodzenia"]);    //Wstawia do bazy opis uszkodzen stwierdonych podczas zwrotu pojazdu
+        DB::update("UPDATE wypozyczenia SET przebieg_po_zwrocie ='$przebieg' WHERE id='$indexWypozyczenia'");
 
         return redirect('/wypozyczenia')->with('message', 'Pojazd zwrocony pomyslnie!');
     }
@@ -121,16 +120,19 @@ class WypozyczeniaController extends Controller
        $indexPojazdu = DB::table('wypozyczenia')->where('id', $id)->first()->id_pojazdu;
        $przebieg = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->przebieg;
 
+       $nr_pojazdu = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->nr_pojazdu;         //Numer pojazdu
+       $marka_index = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->marka;
+       $model_index = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->model;
 
-        return view('zwroty.formularzZwrotu', compact('id', 'indexPojazdu', 'przebieg'));
-//        $date=date("Y-m-d");
-//        $index=$id;
-//        $bool = DB::update("UPDATE wypozyczenia SET id_zwrotu = '2', data_zwrotu='$date' where id='$index'");
-//
-//
-//
-//
-//        return redirect('/wypozyczenia/')->with('message', 'Zwrócono pomyślnie!');
+       $marka = DB::table('s_marka')->where('id', $marka_index)->first()->name;                     //Marka
+       $model =  DB::table('s_model')->where('id', $model_index)->first()->name;                    //Model
+       $wersja = DB::table('pojazdy')->where('id', $indexPojazdu)->first()->wersja;
+
+       $klientIndex = DB::table('wypozyczenia')->where('id', $id)->first()->id_klienta;
+       $klient =  DB::table('users')->where('id', $klientIndex)->first()->name;
+
+        return view('zwroty.formularzZwrotu', compact('id', 'indexPojazdu', 'przebieg', 'nr_pojazdu', 'marka', 'model', 'wersja', 'klient'));
+
     }
 
     public function klientReportGenrate() {

@@ -26,6 +26,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_zwrotu')->default(1);
             $table->boolean('dod_ubezpieczenie');
             $table->integer('skan_umowy');
+            $table->float('przebieg_po_zwrocie')->nullable();
+
 
 
             $table->timestamps();
