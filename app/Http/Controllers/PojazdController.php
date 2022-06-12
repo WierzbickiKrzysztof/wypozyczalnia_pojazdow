@@ -9,6 +9,7 @@ use App\Models\S_typ_pojazdu;
 use App\Models\Wypozyczenie;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class PojazdController extends Controller
 {
@@ -88,7 +89,14 @@ class PojazdController extends Controller
         $wypozyczenia = Wypozyczenie::where('id_pojazdu', $id)->get();
         $pojazd = Pojazd::find($id);
 
-        return view('pojazdy.history', compact('pojazd', 'wypozyczenia'));
+        $marka_index = DB::table('pojazdy')->where('id', $id)->first()->marka;
+        $model_index = DB::table('pojazdy')->where('id', $id)->first()->model;
+
+        $marka = DB::table('s_marka')->where('id', $marka_index)->first()->name;                     //Marka
+        $model =  DB::table('s_model')->where('id', $model_index)->first()->name;                    //Model
+        $wersja = DB::table('pojazdy')->where('id', $id)->first()->wersja;                           //Wersja
+
+        return view('pojazdy.history', compact('pojazd', 'wypozyczenia', 'marka' , 'model', 'wersja'));
     }
 
 }

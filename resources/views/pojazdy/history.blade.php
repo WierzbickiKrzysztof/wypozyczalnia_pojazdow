@@ -1,19 +1,18 @@
 <x-layout>
 
     <h1 class="text-center mb-4">Historia pojazdu</h1>
-    <h2 class="text-center mb-4" style="color:orange"> {{ $pojazd->nr_pojazdu }} </h2>
+    <p class="text-center mb-4" style="color:orange; font-size: x-large; font-weight: bolder"> {{ $marka }} {{ $model }} {{ $wersja }} <br/> {{ $pojazd->nr_pojazdu }}</p>
 
     <br>
     <table>
         <tr>
             <th>ID Wypożyczenia</th>
-            <th>ID Pojazdu</th>
-            <th>Kwota wypożyczenia (dzień)</th>
+            <th>Klient</th>
             <th>Data rozpoczęcia</th>
             <th>Data zakończenia</th>
             <th>Data zwrotu</th>
-            <th>Zwrócone?</th>
-            <th>Dodatkowe ubezpieczenie</th>
+            <th>Zwrócony?</th>
+            <th>Przebieg po zwrocie</th>
         </tr>
 
 
@@ -22,8 +21,7 @@
 
             <tr>
                 <td>{{ $Wypozyczenie->id}}</td>
-                <td> {{ $Wypozyczenie->id_pojazdu }}</td>
-                <td> {{ $Wypozyczenie->kowta_wypozyczenia_dzien }}</td>
+                <td>{{ $Wypozyczenie->klient->name }}</td>
                 <td> {{ $Wypozyczenie->data_rozpoczecia }}</td>
                 <td> {{ $Wypozyczenie->data_zakonczenia }}</td>
                 <td>{{$Wypozyczenie->data_zwrotu}}</td>
@@ -35,9 +33,9 @@
                 @else
                     <td></td>         {{-- Tutaj else raczej niepotrzebny bo nigdy sie nie wykona?, ale na wszelki wypadek, zeby nie zbugowala sie tabela  --}}
                 @endif
-
-                <td> {{ $Wypozyczenie->dod_ubezpieczenie }}</td>
+                <td>{{ $Wypozyczenie->przebieg_po_zwrocie }}</td>
             </tr>
+
         @endforeach
     </table>
 

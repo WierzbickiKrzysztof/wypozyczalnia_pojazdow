@@ -27,7 +27,7 @@
                 <div class="mb-3">
                     <label class="form-label" for="klient">Klient</label>
                     <input class="form-control"  type="text" readonly="readonly" data-bs-toggle="tooltip" data-bss-tooltip="" id="klient" name="klient" required="" value="{{ $klient }}">
-                    @error('$pojazd')
+                    @error('$klient')
                     <p class="text-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
